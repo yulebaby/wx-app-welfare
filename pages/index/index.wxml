@@ -1,0 +1,94 @@
+<view class="wrap">
+  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号 </button>  -->
+  <view class="bg bg1">
+    <image src="/assets/images/bg1.jpg"></image>
+    <view class="rulesBtn"></view>
+  </view>
+  <view class="bg bg2">
+    <image src="/assets/images/bg2.jpg"></image>
+    <view class="tipsBox">就差<text class="personNum">{{personNum}}</text>人就可以领取贝亲礼包</view>
+    <view class="getGiftBox" bindtap="getGiftClk"><image src='/assets/images/joinbtn.png'></image></view>
+  </view>
+  <view class="bg bg3">
+    <image src="/assets/images/bg3.jpg"></image>
+  </view>
+</view>
+<!--表单-->
+<view wx:if="{{formShow}}" class="formBox">
+  <image src='/assets/images/formbg.png' class="bgimg"></image>
+  <view class="closeBtn" bindtap="closeForm"><image src='/assets/images/close.png'></image></view>
+  <view class="formContent">
+    <view class="inforBox clearfix">
+      <text class="fl">宝宝姓名</text><input maxlength="10" placeholder="最输入宝宝姓名" class="fl"/>
+    </view> 
+    <view class="inforBox clearfix">
+      <text class="fl">宝宝生日</text>
+      <picker mode="date" value="{{ birthday }}" start="2000-01-01" end="2020-01-01" maxlength="20" bindchange="birthdayChange" class="fl">
+        <view class='select' wx:if="{{ birthday }}">{{ birthday }}</view>
+        <view class='notSelect' wx:if="{{ !birthday }}">请选择宝宝生日</view>
+      </picker>
+    </view> 
+    <view class="inforBox clearfix">
+      <text class="fl">宝宝性别</text>
+      <view class="genderBox fl">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <!-- <label class="ui-radio {{item.checked==true ? 'active' : ''}}" wx:for="{{items}}>
+              <radio value="{{item.value}}" checked="{{item.checked}}"></radio>
+              <text class="text">{{item.name}}</text>
+          </label> -->
+          <!-- <label wx:for="{{items}}" bindchange="radioChange" class="ui-radio">
+             <radio value="{{item.value}}" checked="{{item.checked}}"></radio>
+             {{item.name}}
+          </label> -->
+          <label class="ui-radio">
+             <radio value="1" checked="true"></radio>
+             <view class="checkGender"><image src="{{checkedUrl}}"></image></view>
+             <text>男</text>
+          </label>
+          <label class="ui-radio">
+             <radio value="2" checked=""></radio>
+             <view class="checkGender"><image src="{{uncheckUrl}}"></image></view>
+             <text>女</text>
+          </label>
+        </radio-group>
+      </view>
+    </view> 
+    <view class="inforBox clearfix">
+      <text class="fl">联系方式</text>
+      <input maxlength="11" placeholder="最输入您的电话号码" class="fl phoneInput"/>
+      <view class="fl getPhone"><image src="/assets/images/ksgetBtn.png"></image></view>
+    </view>
+    <text class="tips">请务必确认以上信息真实准确，以便门店能及时联系到您</text>
+    <view class="commitForm"><image src='/assets/images/getgift.png'></image></view>
+  </view>
+</view>
+<view class="mackbg" wx:if="{{mackFlag}}"></view>
+<!--地理位置太远，没法参加此次活动-->
+<view class="popBox01" wx:if="{{popFlag1}}">
+  <image src='/assets/images/popbg2.png' class="backImg"></image>
+  <view class="closeBtn" bindtap="closePop"><image src='/assets/images/close.png'></image></view>
+  <view class="wrapCon">
+    <text class="shameTip">很遗憾，您离我们的门店有些远没法参与这次的活动</text>
+    <text class="shareTips">建议您分享给门店附近的朋友</text>
+  </view>
+  <view class="shopInforBox">
+    <text>活动门店：朝阳区活力东方店</text>
+    <text>门店地址：北京市朝阳区XXXXXXXXXXXXXXXXXXXX</text>
+    <text>门店电话：12345678910</text>
+  </view>
+  <view class="shareBtn"><image src="/assets/images/shareBtn.png"></image></view>
+</view>
+<!--领取礼包还差几人-->
+<view class="popBox02" wx:if="{{popFlag2}}">
+  <image src='/assets/images/popbg1.png' class="backImg"></image>
+  <view class="closeBtn" bindtap="closePop"><image src='/assets/images/close.png'></image></view>
+  <view class="wrapCon">
+    <view class="lineTxt01"><text>距离领取礼包只差 <text class="count">4</text> 人</text></view>
+  </view>
+  <view class="smallTxt">
+    <view class="lineTxt02"><text>参团人数达到<text class="redTxt">5</text>人，每一位参团者都能</text></view>
+    <view class="lineTxt02"><text>到门店<text class="redtxt2">免费领取贝亲纸尿裤套装一套，</text></text></view>
+    <view class="lineTxt02"><text>请快快分享给你的朋友吧</text></view>  
+  </view>
+  <view class="shareBtn"><image src="/assets/images/shareBtn.png"></image></view>
+</view>
