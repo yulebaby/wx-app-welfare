@@ -61,17 +61,12 @@ const GetAddress = (callback) => {
   if (app.globalData.address) {
     callback(app.globalData.address)
   } else {
-
     /* --------- 获取用户经纬度, 成功存储并返回,失败则提示用户授权 --------- */
     wx.getLocation({
       type: 'wgs84',
-      success(res) {
-        GetCity({ lat: res.latitude, lon: res.longitude }).then(address => {
-          app.globalData.address = address;
-          callback(app.globalData.address)
-        }).catch(err => {
-          callback(null)
-        })
+      success(address) {
+        app.globalData.address = address;
+        callback(app.globalData.address);
       },
       fail(err) {
         /* --------- 提示用户授权 --------- */
@@ -85,14 +80,9 @@ const GetAddress = (callback) => {
                 success(res) {
                   wx.getLocation({
                     type: 'wgs84',
-                    success() {
-                      /* --------- 通过经纬度获取到当前地址信息 --------- */
-                      GetCity({ lat: res.latitude, lon: res.longitude }).then(address => {
-                        app.globalData.address = address;
-                        callback(app.globalData.address)
-                      }).catch(err => {
-                        callback(null)
-                      })
+                    success(address) {
+                      app.globalData.address = address;
+                      callback(app.globalData.address);
                     }
                   })
                 },
@@ -130,7 +120,7 @@ const GetCity = (obj) => {
 
 
 /* ------------------------- 获取用户标示 ------------------------- */
-const GetOpenid = (callback) => {
+const GetOpenid = () => {
   return new Promise((resolve, reject) => {
     if (app.globalData.openid) {
       resolve(app.globalData.openid);
@@ -138,17 +128,20 @@ const GetOpenid = (callback) => {
       wx.login({
         success(res) {
           wx.request({
-            url: 'http://192.168.1.205:8800/user/judgeUserStatus',
+            url: `${app.domain}/getOpenId`,
             method: "GET",
             data: { code: res.code },
             dataType: 'json',
             success(res) {
               if (res.data.code == 1000) {
-                app.globalData.openid = res.data.result.openid;
+                app.globalData.openid = res.data.result;
                 resolve(app.globalData.openid);
               } else {
-                reject(null);
+                resolve(null);
               }
+            },
+            fail(err) {
+              reject(err);
             }
           })
         }

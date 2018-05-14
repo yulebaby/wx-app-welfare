@@ -31,6 +31,7 @@
   margin: 820rpx 30rpx 0;
   background: #fff;
   border-radius: 30rpx;
+  box-shadow: 0 0 6px 4px #fde9ae inset;
   position: relative;
 }
 .group-head {
@@ -69,9 +70,20 @@
 }
 .group-btn {
  width: 160rpx;
+ height: 160rpx;
  position: absolute;
  top: 20rpx;
  right: 30rpx; 
+ z-index: 1;
+}
+.share-btn {
+  width: 100%;
+  height: 100%;
+  background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/activity/group-share.png') no-repeat;
+  background-size: contain;
+}
+.share-btn::after {
+  display: none;
 }
 .comp-head {
   color: #FE9524;
@@ -140,6 +152,15 @@
   position: fixed;
   top: 0;
   z-index: 9;
+  transition: all .3s;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.2);
+}
+.modal-box.show {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
 }
 .modal-close {
   width: 60rpx;
@@ -150,6 +171,9 @@
 .modal-content {
   width: 660rpx;
   margin: 200rpx auto 0;
+}
+.modal-content.model-big {
+  margin-top: 160rpx;
 }
 
 
@@ -178,12 +202,12 @@
 }
 .form-control-input {
   padding: 0 20rpx;
-  height: 100%;
+  height: 80rpx;
   background: rgba(249,249,249,1);
 }
 .form-control-input input,
 .form-control-input .picker {
-  height: 100%;
+  height: 80rpx;
   color: #999;
   font-size: 22rpx;
   line-height: 80rpx;
@@ -210,10 +234,16 @@
 }
 .get-tel {
   color: #00f;
+  height: 80rpx;
+  line-height: 80rpx;
   font-size: 10px;
   position: absolute; 
   top: 0;
-  right: 10rpx;
+  right: -10rpx;
+  z-index: 9;
+}
+.get-tel::after {
+  display: none;
 }
 .form-tip {
   color: #999;
@@ -269,9 +299,13 @@
 .group-content-btn {
   margin-top: 30rpx;
 }
-.group-content-btn view {
+.group-content-btn button {
   display: inline-block;
   width: 260rpx;
+  background: #fff;
+}
+.group-content-btn button::after {
+  display: none;
 }
 
 /* ---------------- 距离太远 ----------------  */
@@ -345,13 +379,13 @@
   background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/activity/modal-rule-head-rf.png') no-repeat;
   background-size: contain;
 }
-.rule--content-cell {
+.rule-content-cell {
   color: #666;
   font-size: 22rpx;
   padding-left: 34rpx;
   position: relative;
 }
-.rule--content-cell::before {
+.rule-content-cell::before {
   content: '';
   display: block;
   width: 20rpx;
@@ -362,6 +396,6 @@
   top: 4rpx;
   left: 0;
 }
-.rule--content-cell:not(:last-child) {
+.rule-content-cell:not(:last-child) {
   margin-bottom: 20rpx;
 }

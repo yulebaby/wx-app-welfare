@@ -11,8 +11,7 @@
  * @time 2018-01-16
  */
 
-
-const Domain = 'http://192.168.1.205:8800';
+const Domain = getApp().domain;
 
 const Get = (url, param) => {
   return new Promise((resolve, reject) => {
