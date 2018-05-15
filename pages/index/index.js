@@ -12,10 +12,12 @@ Page({
     groupInfo: null,                     // 团信息   
     groupId  : null,                     // 分享的团Id
     isJoin   : false,                    // 是否参加过活动
-    location : null
+    location : null,
+    shopInfo : null
   },
 
   onLoad: function (options) {
+    console.log(options);
     let params = {};
     if (options.groupId) {
       this.setData({ groupId: options.groupId });
@@ -28,6 +30,7 @@ Page({
 
     /* ----------------- 根据 openId 查询参团信息 ----------------- */
     GetInfo.getOpenid().then(res => {
+      console.log(res)
       params.openId = res;
       Http.get('/findGroupInfo', params).then( group => {
         this.setData({ isJoin: group.code == 10034 });
@@ -37,9 +40,13 @@ Page({
     });
 
     GetInfo.getAddress( res => {
-      console.log(res)
       this.setData({ location: res });
-    })
+    });
+
+    Http.get('/returnShopInfo').then( res => {
+      this.setData({ shopInfo: res.result });
+    });
+
   },
 
   onReady() {
@@ -90,7 +97,7 @@ Page({
         wx.hideLoading();
         if (res.code == 1000) {
           /* ------------- 参团成功 ------------- */
-          this.setData({ showModal: 'group', groupInfo: res.result, isJoin: true });
+          this.setData({ showModal: res.result.num == 0 ? null : 'group', groupInfo: res.result, isJoin: true });
         } else if (res.code == 10035) {
           /* -------- 用户距离太远无法参加 -------- */
           this.setData({ showModal: 'distance' });
@@ -127,12 +134,13 @@ Page({
   },
   /* -------------------- 分享 -------------------- */
   onShareAppMessage: function (res) {
+    let _this = this;
     return {
       title: '参团免费领礼包，快来参加吧',
       path: `pages/index/index?groupId=${this.data.groupInfo.groupId || this.data.groupId}`,
       imageUrl: 'https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/activity/share.jpg',
-      success: function (res) {
-        this.setData({ showModal: null });
+      success(res) {
+        _this.setData({ showModal: null });
       },
       fail: function (res) {
         // 转发失败
