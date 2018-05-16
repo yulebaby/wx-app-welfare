@@ -101,7 +101,7 @@
       <!-- ----------------- 距离太远 ----------------- -->
       <view class='modal-content model-big' wx-if="{{ showModal == 'distance' }}">
         <view><image src='/assets/images/modal-rule-bg.png' mode='widthFix'></image></view>
-        <view class='modal-rule-content'>
+        <view class='modal-rule-content distance'>
           <view class='distance-head'><text>很遗憾，您离我们的门店有些远</text><text>没法参与这次的活动</text></view>
           <view class="distance-tip">建议您分享给门店附近的朋友</view>
           <view class='distance-store'>
@@ -109,7 +109,9 @@
             <text>门店地址：{{ shopInfo.shop_address }}</text>
             <text>门店电话：{{ shopInfo.shop_phone }}</text>
           </view>
-          <view class='group-content-btn distance-btn'><view><image src='/assets/images/share.png' mode='widthFix'></image></view></view>
+          <view class='group-content-btn'>
+            <button open-type="share"><image src='/assets/images/share.png' mode='widthFix'></image></button>
+          </view>
         </view>
       </view>
 

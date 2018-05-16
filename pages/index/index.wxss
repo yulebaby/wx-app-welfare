@@ -342,8 +342,11 @@ page {
   display: block;
   line-height: 1.8;
 }
-.distance-btn {
+.distance-btn, .group-content-btn {
   text-align: center;
+}
+.modal-rule-content.distance {
+  top: 520rpx;
 }
 
 
