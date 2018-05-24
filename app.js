@@ -1,9 +1,8 @@
-//app.js
 App({
   onLaunch: function () {
     
   },
-  domain: 'http://192.168.1.138:8888/push',
+  domain: 'https://swx.beibeiyue.com/ylbb_weixin/push',
   globalData: {
     openid: null
   }

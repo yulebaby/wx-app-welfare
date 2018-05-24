@@ -192,19 +192,24 @@ page {
   left: 0;
 }
 .form-cell {
-  display: flex;
   height: 80rpx;
   line-height: 80rpx;
   margin-bottom: 25rpx;
+  position: relative;
+  overflow: hidden;
 }
 .form-label {
-  width: 120rpx;
+  width: 130rpx;
   color: #333;
   font-size: 26rpx;
+  white-space:nowrap;
+  position: absolute;
+  line-height: 80rpx;
+  left: 0;
 }
 .form-control {
-  flex: auto;
   position: relative;
+  padding-left: 130rpx;
 }
 .form-control-input {
   padding: 0 20rpx;
