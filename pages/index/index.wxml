@@ -6,10 +6,11 @@
     </view>
 
     <view class='content'>
+      <view class='group-head-bg'><image src='/assets/images/group-head-bg.png' mode='widthFix'></image></view>
       <!-- ---------- 参团信息 ---------- -->
        <view class='group-info' wx-if="{{ groupInfo.num > 0 }}">
-        <view class='group-head'>就差 <text>{{ groupInfo.num }}</text> 人就可领走贝亲礼包</view>
-        <view class='group-text'><text>快分享给你的朋友吧</text></view>
+        <view class='group-head'>就差 <text class='font-i'>{{ groupInfo.num }}</text> 人就能获得<text class='font-b'>19.9元体验券</text>了</view>
+        <view class='group-text'>快分享给你的朋友吧</view>
         <view class='group-btn' hover-class='active' wx-if="{{ isJoin }}">
           <button open-type="share" class='share-btn'></button>
         </view>
@@ -19,11 +20,12 @@
       </view>  
       <!-- ---------- 拼团结束 ---------- -->
       <view class='group-complete' wx-if="{{ groupInfo.num == 0 }}">
-        <view class='comp-head'>恭喜您完成拼团任务</view>
-        <view class='comp-span'>鱼乐贝贝水育馆稍后将致电您领取奖品</view>
+        <view class='comp-p'>恭喜您获得了一张</view>
+        <view class='comp-h1'>19.9元低价游泳体验卡</view>
+        <view class='comp-span'>（有效期：2018.1.1 ~ 2018.6.1）</view>
+        <view class='comp-p'>请耐心等待门店联系您到店体验</view>
       </view> 
     </view>
-
 
     <!-- ---------------- 门店信息 ---------------- -->
     <view class='activity-store'>
@@ -38,48 +40,25 @@
       <view class='modal-close'><image src='/assets/images/modal-close.png' bindtap='closeModal' mode='widthFix'></image></view>
       <!-- ------------------ 参加团 ------------------ -->
       <view class='modal-content' wx-if="{{ showModal == 'join' }}">
-        <view><image src='/assets/images/modal-form-bg.png' mode='widthFix'></image></view>
-        <view class='modal-form-content'>
+        <view><image src='/assets/images/collage-alert-join.png' mode='widthFix'></image></view>
+        <view class='modal-content-view form'>
           <form bindsubmit="formSubmit" report-submit='true'>
             <view class='form-cell'>
               <view class='form-label'>宝宝姓名</view>
               <view class='form-control'>
-                <view class='form-control-input'><input name="name" maxlength="30" placeholder="请输入宝宝姓名" /></view>
-              </view>
-            </view>
-            <view class='form-cell'>
-              <view class='form-label'>宝宝生日</view>
-              <view class='form-control'>
-                <view class='form-control-input'>
-                  <picker mode="date" name="birthday" end="{{ nowDate }}" bindchange="birthdayChange">
-                    <view class="picker">{{ birthday ? birthday : '请选择宝宝生日' }}</view>
-                  </picker>
-                </view>
-              </view>
-            </view>
-            <view class='form-cell'>
-              <view class='form-label'>宝宝性别</view>
-              <view class='form-control'>
-                <radio-group name="sex" bindchange="sexChange">
-                  <label class="radio {{ sex == 1 ? 'active' : '' }}">
-                    <radio value="1" checked="true" style='display: none;'/>男孩
-                  </label>
-                  <label class="radio {{ sex == 0 ? 'active' : '' }}">
-                    <radio value="0" style='display: none;'/>女孩
-                  </label>
-                </radio-group>
+                <view class='form-control-input'><input name="name" maxlength="30" placeholder-style="color:#bbb;font-size: 22rpx;" placeholder="请输入宝宝姓名" /></view>
               </view>
             </view>
             <view class='form-cell'>
               <view class='form-label'>联系电话</view>
-              <view class='form-control'>
+              <view class='form-control get-tel'>
                 <view class='form-control-input'>
-                  <input type='number' name="phone" maxlength="11" placeholder="请输入您的电话号码" />
-                   <!-- <button class='get-tel' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>  -->
+                  <input type='number' name="phone" maxlength="11" placeholder-style="color:#bbb;font-size: 22rpx;" placeholder="请输入您的电话号码" />
+                  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>  
                 </view>
               </view>
             </view>
-            <view class='form-tip'>请确认以上信息真实准确，以便门店能及时联系!</view>
+            <view class='form-tip'>请务必确认以上信息真实准确，以便门店能及时联系到您</view>
             <view class='form-submit' hover-class='active'><button formType="submit"></button></view>
           </form>
         </view>
@@ -87,12 +66,11 @@
 
       <!-- ------------------ 团信息 ------------------ -->
       <view class='modal-content' wx-if="{{ showModal == 'group' }}">
-        <view><image src='/assets/images/modal-group-bg.png' mode='widthFix'></image></view>
-        <view class='modal-group-content'>
-          <view class='group-content-head'>距离领取礼包只差 <text>{{ groupInfo.num }}</text> 人</view>
-          <view class='group-content-cell'>参团人数达到 <text>5人</text>，每一位参团者都能</view>
-          <view class='group-content-cell'>到门店游泳 <text>免费领取贝亲大礼包</text></view>
-          <view class='group-content-cell'>请快快分享给你的朋友吧</view>
+        <view><image src='/assets/images/collage-alert-rule.png' mode='widthFix'></image></view>
+        <view class='modal-content-view group'>
+          <view class='group-content-h1'>参团成功</view>
+          <view class='group-content-span'>分享的好友越多，获得低价体验的 机会就越大哟~</view>
+          <view class='group-content-p'>继续分享给你的好友吧！</view>
           <view class='group-content-btn'>
             <button open-type="share"><image src='/assets/images/share.png' mode='widthFix'></image></button>
           </view>
@@ -100,8 +78,8 @@
       </view>
       <!-- ----------------- 距离太远 ----------------- -->
       <view class='modal-content model-big' wx-if="{{ showModal == 'distance' }}">
-        <view><image src='/assets/images/modal-rule-bg.png' mode='widthFix'></image></view>
-        <view class='modal-rule-content distance'>
+        <view><image src='/assets/images/collage-alert-rule.png' mode='widthFix'></image></view>
+        <view class='modal-content-view distance'>
           <view class='distance-head'><text>很遗憾，您离我们的门店有些远</text><text>没法参与这次的活动</text></view>
           <view class="distance-tip">建议您分享给门店附近的朋友</view>
           <view class='distance-store'>
@@ -117,8 +95,8 @@
 
       <!-- ----------------- 活动规则 ----------------- -->
       <view class='modal-content' wx-if="{{ showModal == 'rule' }}">
-        <view><image src='/assets/images/modal-rule-bg.png' mode='widthFix'></image></view>
-        <view class='modal-rule-content'>
+        <view><image src='/assets/images/collage-alert-rule.png' mode='widthFix'></image></view>
+        <view class='modal-content-view rule'>
           <view class='rule-content-head'>活动规则</view>
           <view class='rule-content-cell'>活动期间内，每个微信号只可参团1次，中奖者须带宝宝到店游泳后方可领奖。</view>
           <view class='rule-content-cell'>参团总人数达到指定数量后，指定门店将会在5个工作日内安排工作人员联系参团者到店领奖。</view>

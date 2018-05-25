@@ -99,49 +99,69 @@ const GetAddress = (callback) => {
   }
 }
 
-/* ------------------------- 获取所在城市 ------------------------- */
-const Http = require('./request.js');
-const GetCity = (obj) => {
-  return new Promise((resolve, reject) => {
-    Http.get('https://apis.map.qq.com/ws/geocoder/v1', {
-      location: obj.lat + ',' + obj.lon,
-      key: 'VNIBZ-SC4KQ-HON5Z-GRGRT-EWZSV-QNFPU'
-    }).then(res => {
-      if (res.status == 0) {
-        resolve(res.result)
-      } else {
-        reject('获取城市失败')
-      }
-    }).catch(err => {
-      reject('获取城市失败')
-    })
-  })
-}
-
 
 /* ------------------------- 获取用户标示 ------------------------- */
-const GetOpenid = () => {
+const GetOpenId = () => {
   return new Promise((resolve, reject) => {
-    if (app.globalData.openid) {
-      resolve(app.globalData.openid);
+    if (app.globalData.openId) {
+      resolve({ openId: app.globalData.openId, sessionKey: app.globalData.sessionKey });
     } else {
-      wx.login({
-        success(res) {
-          wx.request({
-            url: `${app.domain}/getOpenId`,
-            method: "GET",
-            data: { code: res.code },
-            dataType: 'json',
-            success(res) {
-              if (res.data.code == 1000) {
-                app.globalData.openid = res.data.result;
-                resolve(app.globalData.openid);
-              } else {
-                resolve(null);
+      wx.checkSession({
+        success: function () {
+          let [openId, sessionKey] = [wx.getStorageSync('openId'), wx.getStorageSync('sessionKey')];
+          if (openId && sessionKey) {
+            app.globalData.openId = openId;
+            app.globalData.sessionKey = sessionKey;
+            resolve({ openId: app.globalData.openId, sessionKey: app.globalData.sessionKey });
+          } else {
+            wx.login({
+              success(res) {
+                wx.request({
+                  url: `${app.domain}/add/getCodeAndLogin/${JSON.stringify({ code: res.code })}`,
+                  method: "POST",
+                  dataType: 'json',
+                  success(res) {
+                    if (res.data.success) {
+                      app.globalData.openId = res.data.result.openId;
+                      app.globalData.sessionKey = res.data.result.sessionKey;
+                      resolve({ openId: app.globalData.openId, sessionKey: app.globalData.sessionKey });
+                      
+                      wx.setStorageSync('openId', res.data.result.openId);
+                      wx.setStorageSync('sessionKey', res.data.result.sessionKey);
+                    } else {
+                      resolve(null);
+                    }
+                  },
+                  fail(err) {
+                    reject(err);
+                  }
+                })
               }
-            },
-            fail(err) {
-              reject(err);
+            })
+          }
+        },
+        fail: function () {
+          wx.login({
+            success(res) {
+              wx.request({
+                url: `${app.domain}/add/getCodeAndLogin/${JSON.stringify({ code: res.code })}`,
+                method: "POST",
+                dataType: 'json',
+                success(res) {
+                  if (res.data.success) {
+                    app.globalData.openId = res.data.result.openId;
+                    app.globalData.sessionKey = res.data.result.sessionKey;
+                    resolve({ openId: app.globalData.openId, sessionKey: app.globalData.sessionKey });
+                    wx.setStorage('openId', res.data.result.openId);
+                    wx.setStorage('sessionKey', res.data.result.sessionKey);
+                  } else {
+                    resolve(null);
+                  }
+                },
+                fail(err) {
+                  reject(err);
+                }
+              })
             }
           })
         }
@@ -153,6 +173,6 @@ const GetOpenid = () => {
 
 module.exports = {
   getUserInfo: GetUserInfo,
-  getOpenid: GetOpenid,
+  getOpenId: GetOpenId,
   getAddress: GetAddress
 }

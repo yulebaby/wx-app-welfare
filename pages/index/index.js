@@ -6,9 +6,6 @@ const Http = require('./../../utils/request.js');
 Page({
   data: {
     showModal: null,                     // 是否显示弹出层
-    nowDate  : null,                     // 记录当前年月日
-    birthday : null,                     // 宝宝生日
-    sex      : 1,                        // 宝宝性别
     groupInfo: null,                     // 团信息   
     groupId  : null,                     // 分享的团Id
     isJoin   : false,                    // 是否参加过活动
@@ -17,19 +14,18 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log(options);
-    let params = {};
-    if (options.groupId) {
-      this.setData({ groupId: options.groupId });
-      params.groupId = options.groupId;
-    }
+    // let params = {};
+    // if (options.groupId) {
+    //   this.setData({ groupId: options.groupId });
+    //   params.groupId = options.groupId;
+    // }
 
     wx.showLoading({
       title: '加载中...',
     })
 
     /* ----------------- 根据 openId 查询参团信息 ----------------- */
-    GetInfo.getOpenid().then(res => {
+    GetInfo.getOpenId().then(res => {
       console.log(res)
       params.openId = res;
       Http.get('/findGroupInfo', params).then( group => {
@@ -88,7 +84,7 @@ Page({
       title: '信息提交中...',
       mask: true
     });
-    GetInfo.getOpenid().then(openId => {
+    GetInfo.getOpenId().then(openId => {
       params.openId = openId;
       params.longitude = this.data.location.longitude;
       params.latitude = this.data.location.latitude;
@@ -119,18 +115,6 @@ Page({
   },
   closeModal() {
     this.setData({ showModal: null });
-  },
-  /* ---------------- 宝宝生日改变事件 ---------------- */
-  birthdayChange(e) {
-    this.setData({
-      birthday: e.detail.value
-    })
-  },
-  /* ---------------- 宝宝性别改变事件 ---------------- */
-  sexChange(e) {
-    this.setData({
-      sex: e.detail.value
-    })
   },
   /* -------------------- 分享 -------------------- */
   onShareAppMessage: function (res) {
