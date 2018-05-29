@@ -9,7 +9,7 @@
       <view class='group-head-bg'><image src='/assets/images/group-head-bg.png' mode='widthFix'></image></view>
       <!-- ---------- 参团信息 ---------- -->
        <view class='group-info' wx-if="{{ groupInfo.personNum > 0 }}">
-        <view class='group-head'>就差 <text class='font-i'>{{ groupInfo.personNum - groupInfo.personNumNow }}</text> 人就能获得<text class='font-b'>19.9元体验券</text>了</view>
+        <view class='group-head'>就差 <text class='font-i'>{{ groupInfo.personNum - groupInfo.personNumNow }}</text> 人就能获得<text class='font-b'>39.9元体验券</text>了</view>
         <view class='group-text'>快分享给你的朋友吧</view>
         <view class='group-btn' hover-class='active' wx-if="{{ groupInfo.isJoin }}">
           <button open-type="share" class='share-btn'></button>
@@ -21,7 +21,7 @@
       <!-- ---------- 拼团结束 ---------- -->
       <view class='group-complete' wx-if="{{ groupInfo.num == 0 }}">
         <view class='comp-p'>恭喜您获得了一张</view>
-        <view class='comp-h1'>19.9元低价游泳体验卡</view>
+        <view class='comp-h1'>39.9元低价游泳体验卡</view>
         <view class='comp-span'>（有效期：2018.1.1 ~ 2018.6.1）</view>
         <view class='comp-p'>请耐心等待门店联系您到店体验</view>
       </view> 
