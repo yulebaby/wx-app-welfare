@@ -108,7 +108,7 @@ Page({
     return {
       title: '参团免费领礼包，快来参加吧',
       path: `pages/index/index?groupId=${this.data.groupInfo.groupId || this.data.groupId}`,
-      imageUrl: 'https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/activity/share.jpg',
+      imageUrl: 'https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/collage/share.png',
       success(res) {
         _this.setData({ showModal: null });
       },
