@@ -8,13 +8,13 @@
     <view class='content'>
       <view class='group-head-bg'><image src='/assets/images/group-head-bg.png' mode='widthFix'></image></view>
       <!-- ---------- 参团信息 ---------- -->
-       <view class='group-info' wx-if="{{ groupInfo.num > 0 }}">
-        <view class='group-head'>就差 <text class='font-i'>{{ groupInfo.num }}</text> 人就能获得<text class='font-b'>19.9元体验券</text>了</view>
+       <view class='group-info' wx-if="{{ groupInfo.personNum > 0 }}">
+        <view class='group-head'>就差 <text class='font-i'>{{ groupInfo.personNum - groupInfo.personNumNow }}</text> 人就能获得<text class='font-b'>19.9元体验券</text>了</view>
         <view class='group-text'>快分享给你的朋友吧</view>
-        <view class='group-btn' hover-class='active' wx-if="{{ isJoin }}">
+        <view class='group-btn' hover-class='active' wx-if="{{ groupInfo.isJoin }}">
           <button open-type="share" class='share-btn'></button>
         </view>
-        <view class='group-btn' hover-class='active' wx-if="{{ !isJoin }}">
+        <view class='group-btn' hover-class='active' wx-if="{{ !groupInfo.isJoin }}">
           <image src='/assets/images/group-join.png' data-type="join" bindtap='showModal' hover-class='hover-active' mode='widthFix'></image>
         </view>
       </view>  
@@ -30,9 +30,9 @@
     <!-- ---------------- 门店信息 ---------------- -->
     <view class='activity-store'>
       <view class='activity-head'>活动门店</view>
-      <view class='activity-item'>活动门店：{{ shopInfo.name }}</view>
-      <view class='activity-item'>门店地址：{{ shopInfo.shop_address }}</view>
-      <view class='activity-item'>门店电话：{{ shopInfo.shop_phone }}</view>
+      <view class='activity-item'>活动门店：{{ shopInfo.shopName }}</view>
+      <view class='activity-item'>门店地址：{{ shopInfo.shopAddress }}</view>
+      <view class='activity-item'>门店电话：{{ shopInfo.shopTel || '' }}</view>
     </view>
 
     <!-- ------------------ 弹框 ------------------ -->
@@ -53,7 +53,7 @@
               <view class='form-label'>联系电话</view>
               <view class='form-control get-tel'>
                 <view class='form-control-input'>
-                  <input type='number' name="phone" maxlength="11" placeholder-style="color:#bbb;font-size: 22rpx;" placeholder="请输入您的电话号码" />
+                  <input type='number' name="mobilePhone" maxlength="11" value="{{ phone }}" placeholder-style="color:#bbb;font-size: 22rpx;" placeholder="请输入您的电话号码" />
                   <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>  
                 </view>
               </view>
@@ -83,9 +83,9 @@
           <view class='distance-head'><text>很遗憾，您离我们的门店有些远</text><text>没法参与这次的活动</text></view>
           <view class="distance-tip">建议您分享给门店附近的朋友</view>
           <view class='distance-store'>
-            <text>活动门店：{{ shopInfo.name }}</text>
-            <text>门店地址：{{ shopInfo.shop_address }}</text>
-            <text>门店电话：{{ shopInfo.shop_phone }}</text>
+            <text>活动门店：{{ shopInfo.shopName }}</text>
+            <text>门店地址：{{ shopInfo.shopAddress }}</text>
+            <text>门店电话：{{ shopInfo.shopTel || '' }}</text>
           </view>
           <view class='group-content-btn'>
             <button open-type="share"><image src='/assets/images/share.png' mode='widthFix'></image></button>

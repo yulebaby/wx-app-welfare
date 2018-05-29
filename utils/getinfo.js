@@ -117,7 +117,7 @@ const GetOpenId = () => {
             wx.login({
               success(res) {
                 wx.request({
-                  url: `${app.domain}/add/getCodeAndLogin/${JSON.stringify({ code: res.code })}`,
+                  url: `${app.domain}/getCodeAndLogin/${JSON.stringify({ code: res.code })}`,
                   method: "POST",
                   dataType: 'json',
                   success(res) {
@@ -144,7 +144,7 @@ const GetOpenId = () => {
           wx.login({
             success(res) {
               wx.request({
-                url: `${app.domain}/add/getCodeAndLogin/${JSON.stringify({ code: res.code })}`,
+                url: `${app.domain}/getCodeAndLogin/${JSON.stringify({ code: res.code })}`,
                 method: "POST",
                 dataType: 'json',
                 success(res) {
