@@ -28,7 +28,7 @@ Page({
         Http.post(`/showShopDistance`, { paramJson: JSON.stringify(params) }).then(stores => {
           this.setData({ shopInfo: stores.result });
         });
-        Http.post(`/loogGroup/${JSON.stringify({ openId: user.openId, groupId: this.data.groupId })}`).then(group => {
+        Http.post(`/getGroupInfo/${JSON.stringify({ openId: user.openId, groupId: this.data.groupId })}`).then(group => {
           wx.hideLoading();
           this.setData({groupInfo: group.result})
         })
@@ -38,8 +38,17 @@ Page({
 
   },
 
-  onReady() {
-    
+  onShow() {
+    /* ----------------- 根据 openId 查询参团信息 ----------------- */
+    GetInfo.getOpenId().then(user => {
+      GetInfo.getAddress(location => {
+        this.setData({ location });
+        let params = Object.assign(location, user);
+        Http.post(`/showShopDistance`, { paramJson: JSON.stringify(params) }).then(stores => {
+          this.setData({ shopInfo: stores.result });
+        });
+      });
+    });
   },
 
   /* ----------------- 提交信息参团 ----------------- */
