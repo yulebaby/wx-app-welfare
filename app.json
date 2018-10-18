@@ -1,11 +1,42 @@
 {
   "pages":[
-    "pages/index/index"
+    
+    "pages/index/index",
+    "pages/benefit/ware-detail/ware-detail",
+    "pages/benefit/store-list/store-list",
+    "pages/benefit/submit/submit",
+    "pages/my/personal/personal",
+    "pages/my/bind-phone/bind-phone",
+    "pages/my/base-msg/base-msg",
+    "pages/my/my-exchange/exchange-list/exchange-list",
+    "pages/my/my-exchange/exchange-detail/exchange-detail",
+    "pages/my/pay/pay",
+    "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#C2C2C3",
+    "selectedColor": "#FF839A",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "assets/img/tabbar-ware-active.png",
+        "iconPath": "assets/img/tabbar-ware.png",
+        "pagePath": "pages/index/index",
+        "text": "福利"
+      },
+      {
+        "selectedIconPath": "assets/img/tabbar-my-active.png",
+        "iconPath": "assets/img/tabbar-my.png",
+        "pagePath": "pages/my/personal/personal",
+        "text": "我的"
+      }
+    ]
   }
 }

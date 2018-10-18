@@ -1,110 +1,60 @@
-<view class='box'>
-  <view class="container">
-    <view class='header'>
-      <view class='head-logo'><image src='/assets/images/logo.png' mode='widthFix'></image></view>
-      <view class='head-rule' data-type="rule" bindtap='showModal' hover-class='hover-active'>活动规则</view>
-    </view>
-
-    <view class='content'>
-      <view class='group-head-bg'><image src='/assets/images/group-head-bg.png' mode='widthFix'></image></view>
-      <!-- ---------- 参团信息 ---------- -->
-       <view class='group-info' wx-if="{{ groupInfo.personNum - groupInfo.personNumNow > 0 }}">
-        <view class='group-head'>就差 <text class='font-i'>{{ groupInfo.personNum - groupInfo.personNumNow }}</text> 人就能获得<text class='font-b'>39.9元体验券</text>了</view>
-        <view class='group-text'>快分享给你的朋友吧</view>
-        <view class='group-btn' hover-class='active' wx-if="{{ groupInfo.isJoin }}">
-          <button open-type="share" class='share-btn'></button>
-        </view>
-        <view class='group-btn' hover-class='active' wx-if="{{ !groupInfo.isJoin }}">
-          <image src='/assets/images/group-join.png' data-type="join" bindtap='showModal' hover-class='hover-active' mode='widthFix'></image>
-        </view>
-      </view>  
-      <!-- ---------- 拼团结束 ---------- -->
-      <view class='group-complete' wx-if="{{ groupInfo.personNum - groupInfo.personNumNow == 0 }}">
-        <view class='comp-p'>恭喜您获得了一张</view>
-        <view class='comp-h1'>39.9元低价游泳体验卡</view>
-         <view class='comp-span'>（有效期：2018.06.01 ~ 2018.06.15）</view> 
-        <view class='comp-p'>请耐心等待门店联系您到店体验</view>
-      </view> 
-    </view>
-
-    <!-- ---------------- 门店信息 ---------------- -->
-    <view class='activity-store'>
-      <view class='activity-head'>活动门店</view>
-      <view class='activity-item'>活动门店：{{ shopInfo.shopName }}</view>
-      <view class='activity-item'>门店地址：{{ shopInfo.shopAddress }}</view>
-      <view class='activity-item'>门店电话：{{ shopInfo.shopTel || '' }}</view>
-    </view>
-
-    <!-- ------------------ 弹框 ------------------ -->
-    <view class='modal-box {{ showModal ? "show" : ""}}'>
-      <view class='modal-close'><image src='/assets/images/modal-close.png' bindtap='closeModal' mode='widthFix'></image></view>
-      <!-- ------------------ 参加团 ------------------ -->
-      <view class='modal-content' wx-if="{{ showModal == 'join' }}">
-        <view><image src='/assets/images/collage-alert-join.png' mode='widthFix'></image></view>
-        <view class='modal-content-view form'>
-          <form bindsubmit="formSubmit" report-submit='true'>
-            <view class='form-cell'>
-              <view class='form-label'>宝宝姓名</view>
-              <view class='form-control'>
-                <view class='form-control-input'><input name="name" maxlength="30" placeholder-style="color:#bbb;font-size: 22rpx;" placeholder="请输入宝宝姓名" /></view>
-              </view>
-            </view>
-            <view class='form-cell'>
-              <view class='form-label'>联系电话</view>
-              <view class='form-control get-tel'>
-                <view class='form-control-input'>
-                  <input type='number' name="mobilePhone" maxlength="11" value="{{ phone }}" placeholder-style="color:#bbb;font-size: 22rpx;" placeholder="请输入您的电话号码" />
-                  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>  
-                </view>
-              </view>
-            </view>
-            <view class='form-tip'>请务必确认以上信息真实准确，以便门店能及时联系到您</view>
-            <view class='form-submit' hover-class='active'><button formType="submit"></button></view>
-          </form>
-        </view>
-      </view> 
-
-      <!-- ------------------ 团信息 ------------------ -->
-      <view class='modal-content' wx-if="{{ showModal == 'group' }}">
-        <view><image src='/assets/images/collage-alert-rule.png' mode='widthFix'></image></view>
-        <view class='modal-content-view group'>
-          <view class='group-content-h1'>参团成功</view>
-          <view class='group-content-span'>分享的好友越多，获得低价体验的 机会就越大哟~</view>
-          <view class='group-content-p'>继续分享给你的好友吧！</view>
-          <view class='group-content-btn'>
-            <button open-type="share"><image src='/assets/images/share.png' mode='widthFix'></image></button>
-          </view>
-        </view>
+<view>
+  <view class="section">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{cityList}}" >
+      <view class="picker" >
+      <!-- 北京市 -->
+        {{cityList[index]}}
       </view>
-      <!-- ----------------- 距离太远 ----------------- -->
-      <view class='modal-content model-big' wx-if="{{ showModal == 'distance' }}">
-        <view><image src='/assets/images/collage-alert-rule.png' mode='widthFix'></image></view>
-        <view class='modal-content-view distance'>
-          <view class='distance-head'><text>很遗憾，您离我们的门店有些远</text><text>没法参与这次的活动</text></view>
-          <view class="distance-tip">建议您分享给门店附近的朋友</view>
-          <view class='distance-store'>
-            <text>活动门店：{{ shopInfo.shopName }}</text>
-            <text>门店地址：{{ shopInfo.shopAddress }}</text>
-            <text>门店电话：{{ shopInfo.shopTel || '' }}</text>
-          </view>
-          <view class='group-content-btn'>
-            <button open-type="share"><image src='/assets/images/share.png' mode='widthFix'></image></button>
-          </view>
-        </view>
-      </view>
-
-      <!-- ----------------- 活动规则 ----------------- -->
-      <view class='modal-content' wx-if="{{ showModal == 'rule' }}">
-        <view><image src='/assets/images/collage-alert-rule.png' mode='widthFix'></image></view>
-        <view class='modal-content-view rule'>
-          <view class='rule-content-head'>活动规则</view>
-          <view class='rule-content-cell'>活动期间内，每个微信号只可参团1次，中奖者须带宝宝到店游泳后方可领奖。</view>
-          <view class='rule-content-cell'>参团总人数达到指定数量后，指定门店将会在5个工作日内安排工作人员联系参团者到店领奖。</view>
-          <view class='rule-content-cell'>包括但不限于填写虚假信息、恶意参与活动等行为，一经核实将取消该参与者的参团资格。</view>
-          <view class='rule-content-cell'>本活动奖品仅可在指定门店领取，不支持快递等方式送达。</view>
-          <view class='rule-content-cell'>鱼乐贝贝保留在法律规定范围内对上述规则进行解释的权利。</view>
-        </view>
-      </view> 
-    </view>
+      <view class="icon-slide"></view>
+    </picker>
   </view>
+  <swiper indicator-dots="true" autoplay="true" interval="5000" duration="300"  indicator-active-color="#FFF" circular="true">
+    <block wx:for="{{swiperArray}}" wx:key="key" >
+      <swiper-item >
+        <image src="{{item.bannerUrl}}" class="slide-image" id="{{item.productId}}"  bindtap="goToDetail"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <scroll-view class="tabBar_box" scroll-x="true">
+    <view class="tabBar clearfix">
+      <view class="{{item.typeCode == typeNow ? 'tabNow':''}}"    id="{{item.typeCode}}" bindtap="cutType"    wx:for="{{wareType}}"  wx:key="type">{{item.productType}}</view>
+    </view>
+  </scroll-view>
+  <view class="wareList_box">
+    <navigator class="ware_list"  id="{{item.id}}" url="../benefit/ware-detail/ware-detail?id={{item.id}}" wx:for="{{wareList}}" wx:key="ware">
+      <image src="{{item.coverPic}}" class="ware_img" mode="widthFix"></image>
+      <view class="ware_name">{{item.productName}}</view>
+      <view class="intro_box clearfix">
+        <view class="intro"  wx:for="{{item.intro}}" wx:for-item="intro" wx:key="intro">{{intro}}</view>
+        <view class="exchange_count">累计兑换{{item.exchangeCount}}次</view>
+      </view>
+      <!-- 既可以购买也可以兑换 -->
+      <view class="ware_price" wx:if="{{item.buyStatus==2}}">
+        <view class="ware_money clearfix">
+          <view class="original_cost">￥{{item.productPrice}}</view>
+          <view class="sell_cost">￥{{item.sellPrice }}</view>
+        </view>
+        <view class="use_count">会员刷{{item.cardCount}}次卡兑换</view>
+      </view>
+      <!-- 仅可以销卡 -->
+      <view class="ware_price" wx:if="{{item.buyStatus==0}}">
+        <view class="ware_money clearfix">
+          <view class="original_cost1">￥{{item.productPrice}}</view>
+        </view>
+        <view class="use_count">会员刷{{item.cardCount}}次卡兑换</view>
+      </view>
+      <!-- 仅可以购买 -->
+      <view class="ware_price" wx:if="{{item.buyStatus==1}}">
+        <view class="ware_money1 clearfix">
+          <view class="original_cost">￥{{item.productPrice}}</view>
+          <view class="sell_cost">￥{{item.sellPrice }}</view>
+        </view>
+      </view>
+      <image src='../../assets/img/newShop.png' class="new-ware" wx:if="{{item.isNew}}"></image>
+    </navigator>
+  </view>
+  <!-- <view class="menb" wx:if="{{chiefStatus}}">
+    <image src="../../assets/img/chief-assessment/chief-assessment.png" class="assessment_img" mode='widthFix'></image>
+    <image src="../../assets/img/chief-assessment/close-chief.png" class="close_img" mode='widthFix' bindtap='closeChief'></image>
+  </view> -->
 </view>

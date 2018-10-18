@@ -1,5 +1,8 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
@@ -8,9 +11,12 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.91",
-	"appid": "wx2e01c9aad6eb11b3",
-	"projectname": "collage",
+	"libVersion": "2.3.0",
+	"appid": "wxc4b155fe7d031463",
+	"projectname": "wx-app-welfare2",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -21,24 +27,13 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": 0,
-					"name": "25",
-					"pathName": "pages/index/index",
-					"query": "groupId=24"
-				}
-			]
+			"list": []
 		}
 	}
 }

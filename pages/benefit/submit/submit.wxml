@@ -1,0 +1,63 @@
+<view class="submit_content">
+  <view class="store_msg">
+    <view class="store_name">{{storeMsg.subbranchName}}</view>
+    <view class="address_box clearfix">
+      <view class="store_address">{{storeMsg.detailAdd}}</view>
+      <view class="store_distance">{{distance}}</view>
+    </view>
+  </view>
+  <view class="store_msg">
+    <view class="course_name">{{courseMsg.productName}}</view>
+    <view wx:if="{{displayType=='exchange'}}">
+      <view class="course_box clearfix">
+        <view class="course_key">数量</view>
+        <view class="course_val">1份</view>
+      </view>
+      <view class="course_box price_box clearfix">
+        <view class="course_key">价格</view>
+        <view class="course_val">￥{{courseMsg.productPrice}}</view>
+      </view>
+      <view class="course_box clearfix">
+        <view class="course_key">目前卡次</view>
+        <view class="course_val">{{userMsg.cardTime}}次</view>
+      </view>
+      <view class="course_box clearfix">
+        <view class="course_key">消耗卡次</view>
+        <view class="course_val">{{courseMsg.cardCount}}次</view>
+      </view>
+    </view>
+    <view wx:else>
+      <view class="course_box clearfix">
+        <view class="course_key">数量</view>
+        <view class="course_val">1份</view>
+      </view>
+      <view class="course_box price_box clearfix">
+        <view class="course_key">价格</view>
+        <view class="course_val">￥{{courseMsg.productPrice}}</view>
+      </view>
+      <view class="course_box clearfix">
+        <view class="course_key">合计</view>
+        <view class="course_val">￥{{courseMsg.sellPrice}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="store_msg3">
+    <view class="clearfix">
+      <view class="phone_key">手机号码</view>
+      <view class="phone_val">{{mobilePhone}}</view>
+    </view>
+  </view>
+  <view class="agreement">
+    <view>提交即表示同意商家电话咨询我如何到店</view>
+  </view>
+  <button class="submit_btn" wx:if="{{displayType=='exchange'}}" bindtap='exchange'>去兑换</button>
+  <navigator class="submit_btn" url="../../my/pay/pay?sellPrice={{courseMsg.sellPrice}}&subbranchId={{subbranchId}}&productId={{productId}}" wx:else >去支付</navigator>
+  <view class="menb" wx:if="{{exchangeSuccess}}">
+    <view class="prompt">
+      <view class="prompt_tit">换购成功</view>
+      <view class="prompt_num">您的目前卡次剩余{{residueCount}}次</view>
+      <view class="prompt_cont">请保持手机畅通，稍后商家会联系您</view>
+      <view class="prompt_btn" bindtap='know'>我知道了</view>
+    </view>
+  </view>
+</view>

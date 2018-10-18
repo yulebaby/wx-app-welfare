@@ -1,0 +1,18 @@
+<view class="bindPhone-cont">
+  <view class="logo"><image src="../../../assets/img/logo.png" ></image></view>
+  <view class="form">
+    <view class="input_box">
+      <input type="number" placeholder="请输入手机号" class="phone" name="phoneValue" bindinput='searchInput' maxlength='11'></input>
+      <image src="../../../assets/img/user_icon.png" class="user_icon"></image>
+      <view class="error_prompt">{{phonePrompt}}</view>
+    </view>
+    <view class="input_box">
+      <input type="number" placeholder="请输入验证码" class="pwd"  name="verification" bindinput='codeInput' maxlength='4'></input>
+      <image src="../../../assets/img/pwd_icon.png" class="pwd_icon"></image>
+      <view class="send_QR" bindtap='getVerificationCode'  disabled='{{clickSendCode}}'>{{time}}</view>
+      <view class="error_prompt">{{codePrompt}}</view>
+    </view>
+  </view>
+  <view class="friend_prompt">若您输入的手机号未注册，将会进入注册流程</view>
+  <button class="login_btn" bindtap='bindPhone' >登录</button>
+</view>

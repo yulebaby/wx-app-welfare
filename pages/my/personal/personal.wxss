@@ -1,0 +1,28 @@
+page{background:#F6F7F7;}
+.clearfix::after{display: block;height: 0;clear: both;content: ''}
+/* .outsider{display:none;} */
+.baby_msg{background:#fff;padding:30rpx 40rpx 40rpx;border-bottom:15rpx solid #F5F5F5;}
+.babyMsg_left{float:left;width:160rpx;height:160rpx;border:10rpx solid #F5F5F5;border-radius:50%;vertical-align:middle;overflow:hidden;}
+.babyMsg_right{float:left;padding:49rpx 0 25rpx 36rpx;}
+.baby_name{color:#333333;font-size:36rpx;font-weight:bold;}
+.baby_phone{color:#666;font-size:28rpx;padding-top:20rpx;}
+.list_msg{background:#fff;padding:0 30rpx;}
+.msg_box{padding:29rpx 0 26rpx 69rpx;position:relative;border-bottom:1rpx solid #F0F0F0;}
+.babyMsg_icon{width:36rpx;height:36rpx;position:absolute;top:36rpx;left:11rpx;}
+.exchange_icon{width:24rpx;height:34rpx;position:absolute;top:36rpx;left:11rpx;}
+.msg_tit{float:left;color:#323334;font-size:30rpx;font-weight:bolder;line-height:53rpx;}
+.openDetail{float:right;width:14rpx;height:24rpx;padding:15rpx 11rpx 15rpx 15rpx;}
+
+.member_msg{background:#fff;padding:30rpx 40rpx 42rpx;border-bottom:15rpx solid #F5F5F5;}
+.member_card{width:668rpx;height:355rpx;position:relative;box-sizing:content-box;}
+.memberCard_bg{width:668rpx;height:355rpx;position:absolute;top:0;left:0;}
+.card_logo{width:67rpx;height:54rpx;position:absolute;left:49rpx;top:33rpx;}
+.memberCard_type{color:#fff;font-size:26rpx;position:absolute;top:40rpx;right:35rpx;opacity:0.6;}
+.store_name{width:85%;color:#fff;font-size:32rpx;position:absolute;left:47rpx;top:127rpx;}
+.store_address{width:55%;color:#fff;font-size:24rpx;position:absolute;left:47rpx;top:178rpx;}
+.cardCode{color:#fff;font-size:27rpx;position:absolute;bottom:40rpx;left:47rpx;}
+.limit_time{color:#fff;font-size:27rpx;position:absolute;bottom:40rpx;right:38rpx;}
+.member_integral{padding-top:40rpx;display:flex;justify-content:space-around;text-align:center;}
+.card_key{color:#323334;font-size:24rpx;padding-top:12rpx;}
+.card_val{color:#FD8C9F;font-size:34rpx;}
+.custom_serve{width:100%;color:#999;font-size:20rpx;position:absolute;bottom:40rpx;text-align:center;}

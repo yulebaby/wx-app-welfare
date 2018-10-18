@@ -1,0 +1,42 @@
+<view class="base_cont">
+  <view class="baby_img">
+    <open-data type="userAvatarUrl" ></open-data>
+  </view>
+  <view class="form">
+    <view class="input_box">
+      <input type="text" placeholder="宝宝昵称" class="baby_name"  bindinput='nameInput' maxlength='10'></input>
+      <view class="error_prompt">{{nameError}}</view>
+    </view>
+    <view class="input_box">
+      <view class="section">
+        <picker mode="date" value="{{date}}" start="2000-01-01" end="{{dateEnd}}" bindchange="bindDateChange">
+          <view class="picker">
+             {{date}}
+          </view>
+        </picker>
+      </view>
+      <view class="error_prompt">{{birthdayError}}</view>
+    </view>
+    <view class="input_box">
+      <view class="section">
+        <picker bindchange="relationshipChange" value="{{relationshipIndex}}" range="{{relationshipArray}}" class="baby_relation">
+          <view class='picker' wx:if="{{ relationshipArray[relationshipIndex] }}">{{ relationshipArray[relationshipIndex] }}</view>
+          <view class='notSelect picker' wx:if="{{ !relationshipArray[relationshipIndex] }}">您与宝宝的关系</view>
+        </picker>
+      </view>
+      <view class="error_prompt">{{relationError}}</view>
+    </view>
+  </view>
+  <button class="submit" bindtap='babyBaseMsg'>确定</button>
+  <view class="menb">
+    <view class="prompt">
+      <view class="prompt_tit">温馨提示</view>
+      <view class="prompt_num">刷卡兑换仅针对鱼乐贝贝门店会员</view>
+      <view class="prompt_cont">您可以到门店体验办卡</view>
+      <view class="prompt_btn clearfix">
+        <view class="close">取消</view>
+        <view class="buy">立即购买</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+.baby_img{width:180rpx;height:180rpx;background:#ccc;border-radius:50%;text-align:center;margin:126rpx auto 39rpx;box-sizing:border-box;overflow:hidden;}
+.baby_img>image{width:180rpx;height:180rpx;border-radius:50%;}
+.form{width:570rpx;margin:0 auto;}
+.form input{width:100%;height:100rpx;color:#999;font-size:26rpx;border:1rpx solid #B2B2B2;border-radius:50rpx;margin-bottom:40rpx;padding-left:61rpx;box-sizing:border-box;}
+.submit{width:570rpx;height:100rpx;color:#fff;background:#FD5576;border-radius:50rpx;margin-top:96rpx;}
+.menb{width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0;text-align:center;z-index:9999;display:none;}
+.prompt{width:504rpx;background:#fff;border-radius:10rpx;padding-top:40rpx;margin:400rpx auto;}
+.prompt_tit{font-size:32rpx;}
+.prompt_num{font-size:28rpx;padding:30rpx 0;}
+.prompt_cont{font-size:24rpx;padding-bottom:30rpx;border-bottom:1rpx solid #ccc;}
+.prompt_btn{height:90rpx;font-size:30rpx;line-height:80rpx;}
+.close{float:left;width:252rpx;height:90rpx;border-right:1rpx solid #ccc;}
+.buy{float:right;width:251rpx;height:90rpx;}
+.input_box{position:relative;}
+.error_prompt{color:#FD5576;font-size:22rpx;position:absolute;bottom:5rpx;left:60rpx;}
+
+.picker{height:100rpx;color:#999;font-size:26rpx;line-height:100rpx;border:1rpx solid #B2B2B2;border-radius:50rpx;margin-bottom:40rpx;padding-left:61rpx;box-sizing:border-box;overflow:hidden;}

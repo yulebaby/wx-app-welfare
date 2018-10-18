@@ -1,0 +1,15 @@
+page{background:#F5F5F5;}
+.no_exchange{text-align:center;padding-top:220rpx;}
+.no_exchange>image{width:242rpx;height:174rpx;}
+.no_exchange>view{color:#aaa;font-size:24rpx;}
+.exist_exchange{padding:0 30rpx;}
+.exchange_box{width:690rpx;height:230rpx;margin-top:24rpx;position:relative;}
+.exchange_box>image{width:100%;height:100%;}
+.course_name{width:62%;color:#fff;font-size:28rpx;position:absolute;top:38rpx;left:29rpx;}
+.course_price{color:#fff;font-size:40rpx;position:absolute;bottom:80rpx;right:25rpx;}
+.consume_card{font-size:32rpx;}
+.course_code,.usecourse_code{color:#666;font-size:24rpx;position:absolute;bottom:18rpx;left:29rpx;}
+.usecourse_code{text-decoration:line-through;}
+.course_state{color:#666;font-size:24rpx;position:absolute;bottom:18rpx;right:26rpx;}
+.use_state{width:100%;color:#AAAAAA;font-size:20rpx;margin:40rpx auto;text-align:center;}
+.useModule{color:#eee;font-size:20rpx;text-align: center;display:inline-block;}

@@ -1,0 +1,133 @@
+<import src="../../../wxParse/wxParse.wxml"/> 
+<view class="wareDetail_cont">
+  <!-- 嵌入h5页面 -->
+  <web-view src="{{productId}}" wx:if="{{display=='h5'}}"></web-view>
+  <!-- 详情 -->
+  <view wx:else>
+    <swiper indicator-dots="true" autoplay="true" interval="5000" duration="300"  indicator-active-color="#FFF" circular="true">
+      <block wx:for="{{swiperArray}}" wx:key="swiper">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="355" height="178"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="ware_msg">
+      <view class="ware_name">{{wareMsg.productName}}</view>
+      <view class="intro_box clearfix" >
+        <view class="intro" wx:for="{{wareMsg.intro}}" wx:for-item="intro" wx:key="intro">{{intro}}</view>
+      </view>
+      <!-- 即可购买也可兑换 -->
+      <view wx:if="{{wareMsg.buyStatus==2}}">
+        <view class="teamBuy-box clearfix">
+          <view class="teamBuy-img">
+            <view class="team_text">团购价</view>
+            <image src="../../../assets/img/team_buy.png" class="teamBuy-img"></image>
+          </view>
+          <view class="team_price">￥{{wareMsg.sellPrice}}</view>
+          <view class="original_price">￥{{wareMsg.productPrice}}</view>
+        </view>
+        <view class="price_box clearfix">
+          <view class="member_msg">
+            <view class="member_consumCard">会员刷{{wareMsg.cardCount}}次卡兑换</view>
+          </view>
+          <view class="exchange_count">累积兑换{{wareMsg.exchangeCount}}份</view>
+        </view>
+      </view>
+      <!-- 仅可以销卡 -->
+      <view wx:if="{{wareMsg.buyStatus==0}}">
+        <view class="teamBuy-box clearfix">
+          <view class="teamBuy-img">
+            <view class="team_text">团购价</view>
+            <image src="../../../assets/img/team_buy.png" class="teamBuy-img"></image>
+          </view>
+          <view class="team_price1">会员刷{{wareMsg.cardCount}}次卡兑换</view>
+          <view class="original_price">￥{{wareMsg.productPrice}}</view>
+          <view class="exchange_count1">累积兑换{{wareMsg.exchangeCount}}份</view>
+        </view>
+      </view>
+      <!-- 仅可以购买 -->
+      <view wx:if="{{wareMsg.buyStatus==1}}">
+        <view class="teamBuy-box clearfix">
+          <view class="teamBuy-img">
+            <view class="team_text">团购价</view>
+            <image src="../../../assets/img/team_buy.png" class="teamBuy-img"></image>
+          </view>
+          <view class="team_price">￥{{wareMsg.sellPrice}}</view>
+          <view class="original_price">￥{{wareMsg.productPrice}}</view>
+          <view class="exchange_count1">累积兑换{{wareMsg.exchangeCount}}份</view>
+        </view>
+      </view>
+    </view>
+    <!----------------------富文本或品牌介绍--------------------------->
+    <view class="brand_des">
+      <view class="richText" wx:if="{{wareMsg.brandDesc}}">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      </view>
+      <view class="brand_box" wx:else>
+        <view class="brand_tit">品牌介绍</view>
+        <view class="brand_cont">{{wareMsg.serviceContent}}</view>
+      </view>
+    </view>
+    <!----------------------活动须知--------------------------->
+    <view class="active_msg">
+      <view class="active_tit">活动须知</view>
+      <view class="active_key">有效期：</view>
+      <view class="active_val">{{wareMsg.putawayDate}}至{{wareMsg.soldoutDate}}</view>
+      <view class="active_key">可用时间：</view>
+      <view class="active_val">{{wareMsg.usableTime}}</view>
+      <view class="active_key">活动规则：</view>
+      <view class="active_val2" decode='true'>
+      <!-- {{wareMsg.ruleContent}} -->
+        <template is="wxParse" data="{{wxParseData:article1.nodes}}"/>
+      </view>
+    </view>
+    <!----------------------地址--------------------------->
+    <view class="address_msg">
+      <view class="address_tit">{{storeMsg[0].subbranchName}}</view>
+      <view class="address_box clearfix">
+        <view class="address_detail">{{storeMsg[0].detailAdd}}</view>
+        <view class="address_distance">
+      {{ storeMsg[0].distance}}
+          <!-- {{ storeMsg.distance>1000 ?  (storeMsg.distance/1000).toFixed(1)+"km"   :     parseInt(storeMsg.distance)+"m" }} -->
+        </view>
+      </view>
+      <navigator url="../store-list/store-list?type=all&productId={{productId}}" class="goToStoreList clearfix" wx:if="{{storeMsg.length>1}}" >
+        <view class="store_num" >查看全部{{storeMsg.length}}个活动地点</view>
+        <image src="../../../assets/img/arrow.png"></image>
+      </navigator>
+      <view class="navigator" data-lng="{{storeMsg[0].lng}}" data-lat="{{storeMsg[0].lat}}" data-storename="{{storeMsg[0].subbranchName}}" data-address="{{storeMsg[0].detailAdd}}" catchtap='mapclick' wx:else>
+        <image src="../../../assets/img/arrow.png" class="open_map"></image>
+      </view>
+    </view>
+    <view class="brand_des">
+      <view class="brand_box">
+        <view class="brand_tit">取消条款</view>
+        <view class="brand_cont">该产品购买/兑换成功后不可退改，请慎重考虑后下单 </view>
+      </view>
+      <view class="richText"></view>
+    </view>
+    <view class="exchange-btn clearfix">
+      <view class="custom_service" bindtap="tel">
+        <image src="../../../assets/img/custom_service.png"></image>
+        <view>客服</view>
+      </view>
+
+      <navigator url="../../index/index" open-type="switchTab" hover-class="other-navigator-hover"  class="homePage">
+        <image src="../../../assets/img/home.png"></image>
+        <view>首页</view>
+      </navigator>
+      <button class="member_btn1" bindtap='exchange' disabled='{{wareMsg.exchangeIsBuy==0 ? false : true}}' wx:if="{{wareMsg.buyStatus==0}}">刷{{wareMsg.cardCount}}次卡兑换</button>
+      <button class="member_btn" bindtap='exchange' disabled='{{wareMsg.exchangeIsBuy==0 ? false : true}}' wx:if="{{ wareMsg.buyStatus==2}}">刷{{wareMsg.cardCount}}次卡兑换</button>
+      <button class="noMember"   bindtap='buy' disabled='{{wareMsg.buyisBuy==0 ? false : true}}' wx:if="{{wareMsg.buyStatus==2}}">￥{{wareMsg.sellPrice}}购买</button>
+      <button class="noMember1"   bindtap='buy' disabled='{{wareMsg.buyisBuy==0 ? false : true}}' wx:if="{{wareMsg.buyStatus==1}}">￥{{wareMsg.sellPrice}}购买</button>
+    </view>
+    <view class="copyright">本活动最终解释权为鱼乐贝贝</view>
+    
+  </view>
+
+
+
+  
+
+
+</view>

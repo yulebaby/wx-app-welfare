@@ -1,382 +1,57 @@
-page {
-  height: 100%;
-}
-.box {
-  width: 100%;
-  height: 100%;
-  background: #df5c67;
-  position: fixed;
-  top: 0;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.container {
-  min-height: 100%;
-  background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/collage/content-bg.png') no-repeat;
-  background-size: cover;
-  overflow: hidden;
-}
-
-/* ---------------- header信息 ----------------  */
-.header view {
-  position: absolute;
-  top: 30rpx;
-}
-.head-logo {
-  width: 230rpx;
-  left: 30rpx;
-}
-.head-rule {
-  right: 30rpx;
-  height: 48rpx;
-  padding: 0 18rpx;
-  color: #fff;
-  font-size: 28rpx;
-  line-height: 46rpx;
-  background: rgba(255, 255, 255, .2);
-  border: solid 1px #fff;
-  border-radius: 48rpx;
-}
-
-/* ----------------- 活动信息 -----------------  */
-.content {
-  padding: 35rpx;
-  margin: 800rpx 30rpx 0;
-  background: #fff;
-  border-radius: 30rpx;
-  box-shadow: 0 0 6px 4px #fde9ae inset;
-  position: relative;
-}
-.group-head-bg {
-  width: 375rpx;
-  margin: 0 auto 26rpx;
-  text-align: center;
-}
-.group-head {
-  color: #555;
-  font-size: 32rpx;
-  line-height: 1;
-  text-align: center;
-}
-.group-head .font-i {
-  color: #FE9524;
-  font-size: 48rpx;
-  line-height: 1;
-}
-.group-head .font-b {
-  font-weight: bold;
-}
-.group-text {
-  margin: 20rpx 0 40rpx;
-  color: #999;
-  font-size: 24rpx;
-  text-align: center;
-}
-.group-btn {
-  width: 100%;
-}
-.share-btn {
-  width: 100%;
-  height: 120rpx;
-  background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/collage/group-share.png') no-repeat center;
-  background-size: contain;
-}
-.share-btn::after {
-  display: none;
-}
-.group-complete view {
-  text-align: center;
-  line-height: 1;
-}
-.comp-h1 {
-  color: #FE9524;
-  font-size: 42rpx;
-  margin-bottom: 20rpx;
-}
-.comp-p {
-  color: #555;
-  font-size: 32rpx;
-  margin-bottom: 30rpx;
-}
-.comp-span {
-  color: #999;
-  font-size: 24rpx;
-  line-height: 1;
-  margin-bottom: 30rpx;
-}
-
-/* ---------------- 底部门店信息 ----------------  */
-.activity-store {
-  margin: 80rpx 30rpx 40rpx;
-  padding: 30rpx 40rpx;
-  border-radius: 20rpx;
-  background: #cd3c57;
-  position: relative;
-}
-.activity-head {
-  width: 200rpx;
-  padding: 20rpx 0;
-  color: #fff;
-  font-size: 34rpx;
-  line-height: 1;
-  text-align: center;
-  border-radius: 20rpx;
-  background: #cd3c57;
-  position: absolute;
-  top: 0; 
-  left: 50%;
-  margin-left: -100rpx;
-  margin-top: -40rpx;
-}
-.activity-item {
-  color: #ffc1cc;
-  font-size: 26rpx;
-  line-height: 1.4;
-}
-.activity-item:not(:last-child) {
-  margin-bottom: 12rpx;
-}
-
-
-
-/* ---------------- 弹出层 ----------------  */
-.modal-box {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, .5);
-  position: fixed;
-  top: 0;
-  z-index: 9;
-  transition: all .3s;
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(1.2);
-}
-.modal-box.show {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-}
-.modal-close {
-  width: 60rpx;
-  position: absolute;
-  top: 140rpx;
-  right: 70rpx;
-}
-.modal-content {
-  margin-top: 200rpx;
-}
-
-/* ---------------- 参加团 ----------------  */
-.modal-content-view {
-  width: 610rpx;
-  margin: 0 auto;
-  background: #fff;
-  padding: 0 40rpx;
-  border-bottom-right-radius: 20rpx;
-  border-bottom-left-radius: 20rpx;
-  overflow: hidden;
-}
-.modal-content-view.form {
-  padding-top: 16rpx;
-}
-.modal-content-view.rule {
-  padding: 30rpx 40rpx 46rpx;
-}
-.modal-content-view.distance {
-  padding: 44rpx 40rpx 70rpx;
-}
-.modal-content-view.group {
-  padding: 40rpx;
-}
-.form-cell {
-  height: 80rpx;
-  line-height: 80rpx;
-  margin-bottom: 35rpx;
-  position: relative;
-  overflow: hidden;
-}
-.form-label {
-  width: 130rpx;
-  color: #333;
-  font-size: 26rpx;
-  line-height: 80rpx;
-  white-space:nowrap;
-  position: absolute;
-  left: 0;
-}
-.form-control {
-  position: relative;
-  padding-left: 130rpx;
-}
-.form-control.get-tel {
-  padding-right: 140rpx;
-}
-.form-control-input {
-  padding: 0 20rpx;
-  height: 80rpx;
-  background: rgba(249,249,249,1);
-}
-.form-control-input input {
-  height: 80rpx;
-  color: #999;
-  font-size: 24rpx;
-  line-height: 80rpx;
-}
-.form-control.get-tel button {
-  display: block;
-  width: 140rpx;
-  height: 80rpx;
-  background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/collage/get-tel.png') no-repeat center;
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.form-control.get-tel button::after {
-  display: none;
-}
-.form-tip {
-  color: #999;
-  font-size: 10px;
-  text-align: center;
-  margin-top: 5rpx;
-}
-.form-submit {
-  text-align: center;
-  margin-top: 40rpx;
-  margin-bottom: 44rpx;
-}
-.form-submit button {
-  width: 100%;
+page>view{overflow:hidden;}
+.section{font-size:26rpx;padding-top:10rpx;margin-bottom:30rpx;text-align:center;}
+.picker{display:inline-block;}
+.icon-slide{
   display: inline-block;
-  height: 90rpx;
-  background: #fff url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/activity/group-submit.png') no-repeat center;
-  background-size: contain;
+  width: 0px;
+  height: 0px;
+  margin-top: 3px;
+  vertical-align: middle;
+  margin-left: 6px;
+  border-top: solid 6px #7f7f7f;
+  border-right: solid 6px #fff;
+  border-bottom: solid 6px #fff;
+  border-left: solid 6px #fff;
+  overflow: hidden;
 }
-.form-submit button::after {
-  display: none;
+/* ------------------- banner ------------------- */
+swiper{
+  height: 200rpx;
+  /* margin-bottom: 45rpx; */
+  border-bottom:15px solid #F5F5F5;
 }
-
-
-/* ---------------- 团信息 ----------------  */
-.modal-content-view.group view {
-  line-height: 1;
-  text-align: center;
+swiper image{
+   width: 750rpx;
+   height: 200rpx;
 }
-.group-content-btn {
-  margin-top: 30rpx;
+/* ------------------- tabBar ------------------- */
+.tabBar_box{width:750px;}
+.tabBar{
+  width:100%;overflow:scroll;
+  border-bottom:2rpx solid #F0F0F0;
+  margin-left:20rpx;
+  padding-right:30px;
 }
-.group-content-h1 {
-  color: #FE9524;
-  font-size: 48rpx;
-  margin-bottom: 30rpx;
-}
-.modal-content-view.group .group-content-span {
-  color: #333;
-  font-size: 32rpx;
-  margin-bottom: 35rpx;
-  line-height: 48rpx;
-  font-weight: 300;
-}
-.group-content-p {
-  color: #333;
-  font-size: 32rpx;
-  margin-bottom: 70rpx;
-}
-.group-content-btn button {
-  display: inline-block;
-  width: 260rpx;
-  background: #fff;
-}
-.group-content-btn button::after {
-  display: none;
-}
-
-/* ---------------- 距离太远 ----------------  */
-.distance-head {
-  color: #333;
-  font-size: 32rpx;
-  text-align: center;
-  margin-bottom: 10rpx;
-}
-.distance-head text {
-  display: block;
-  line-height: 1.8;
-}
-.distance-tip {
-  color: #333;
-  font-size: 26rpx;
-  text-align: center;
-}
-.distance-store {
-  margin-top: 30rpx;
-  padding: 16rpx 30rpx;
-  color: #999;
-  font-size: 20rpx;
-  background: #f4f4f4;
-  border-radius: 20rpx;
-}
-.distance-store text {
-  display: block;
-  line-height: 1.8;
-}
-.distance-btn, .group-content-btn {
-  text-align: center;
-}
-.modal-rule-content.distance {
-  top: 520rpx;
-}
-
-
-
-/* ---------------- 活动规则 ----------------  */
-.rule-content-head {
-  color: #333;
-  font-size: 30rpx;
-  margin-bottom: 30rpx;
-  line-height: 1;
-  text-align: center;
-  position: relative;
-}
-.rule-content-head::after,
-.rule-content-head::before {
-  content: '';
-  display: block;
-  width: 25rpx;
-  height: 28rpx;
-  position: absolute;
-  top: 8rpx;
-}
-.rule-content-head::before {
-  left: 50%;
-  margin-left: -92rpx;
-  background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/activity/modal-rule-head-lf.png') no-repeat;
-  background-size: contain;
-}
-.rule-content-head::after {
-  right: 50%;
-  margin-right: -90rpx;
-  background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/activity/modal-rule-head-rf.png') no-repeat;
-  background-size: contain;
-}
-.rule-content-cell {
-  color: #666;
-  font-size: 22rpx;
-  padding-left: 34rpx;
-  position: relative;
-}
-.rule-content-cell::before {
-  content: '';
-  display: block;
-  width: 20rpx;
-  height: 20rpx;
-  background: url('https://ylbb-wxapp.oss-cn-beijing.aliyuncs.com/activity/modal-rule-cell.png') no-repeat;
-  background-size: contain;
-  position: absolute;
-  top: 4rpx;
-  left: 0;
-}
-.rule-content-cell:not(:last-child) {
-  margin-bottom: 20rpx;
-}
+/*去除滚动条*/
+::-webkit-scrollbar {width: 0;height: 0;color: transparent;}
+.tabBar>view{float:left;font-size:28rpx;padding:30rpx 30rpx;}
+.tabNow{color:#FD5576;border-bottom:2rpx solid #FD5576;}
+/* ------------------- 商品列表 ------------------- */
+.wareList_box{padding:0 20rpx;}
+.ware_list{padding:27rpx 0 40rpx;border-bottom:1rpx solid #F0F0F0;position:relative;}
+.ware_img{width:100%;border-radius:10rpx;}
+.intro_box{overflow:hidden}
+.ware_name{color:#333;font-size:28rpx;font-weight:bold;padding:20rpx 0 20rpx;}
+.intro{float:left;color:#FF7449;font-size:20rpx;background:#FEF0EB;padding:5rpx 10rpx;border:1rpx solid #FF7449;border-radius:5rpx;margin:0 8rpx;}
+.exchange_count{float:right;color:#999;font-size:24rpx;padding-top:8rpx;}
+.ware_price{position:absolute;bottom:237rpx;right:0;border-top-left-radius:15rpx;}
+.ware_money{height:48rpx;color:#fff;background:#FD5576;padding:16rpx 0 8rpx 0;border-top-left-radius:15rpx;text-align:center;}
+.ware_money1{height:42rpx;color:#fff;background:#FD5576;padding:24rpx 0;border-top-left-radius:15rpx;border-bottom-left-radius:15rpx;text-align:center;}
+.original_cost{float:right;font-size:24rpx;padding:12rpx 20rpx 0 15rpx;text-decoration:line-through;}
+.original_cost1{font-size:30rpx;padding:5rpx 20rpx 0 15rpx;text-decoration:line-through;}
+.sell_cost{float:left;font-size:36rpx;padding-left:20rpx;}
+.use_count{color:#FD5576;font-size:26rpx;background:#fff;padding:8rpx 20rpx;border-bottom-left-radius:15rpx;text-align:center;}
+.new-ware{width:78rpx;height:77rpx;position:absolute;top:27rpx;right:50rpx;}
+.menb{width:100%;height:100%;background:rgba(0,0,0,0.5);padding-top:80rpx;position:fixed;top:0;text-align:center;}
+.assessment_img{width:560rpx;}
+.close_img{width:98rpx;display:block;margin:-10rpx auto 0;}

@@ -1,0 +1,65 @@
+<view class="personal_cont">
+  <!-- 会员 -->
+  <view class="member" wx:if="{{member}}">
+    <view class="member_msg">
+      <view class="member_card">
+        <image src="../../../assets/img/member_card.png" class="memberCard_bg"></image>
+        <image src="../../../assets/img/fish.png" class="card_logo"></image>
+        <view class="memberCard_type">{{userMsg.cardType}}</view>
+        <view class="store_name">{{userMsg.shopName}}</view>
+        <view class="store_address">{{userMsg.shopAddress}}</view>
+        <view class="cardCode">{{userMsg.cardCode}}</view>
+        <view class="limit_time">{{userMsg.cardExptime}}到期</view>
+      </view>
+      <view class="member_integral">
+        <view class="card_box">
+          <view class="card_val">{{userMsg.remainTimes}}</view>
+          <view class="card_key">总剩余卡次</view>
+        </view>
+        <view>
+          <view class="card_val">{{userMsg.tongTime}}</view>
+          <view class="card_key">通卡剩余</view>
+        </view>
+        <view>
+          <view class="card_val">{{userMsg.point}}</view>
+          <view class="card_key">我的积分</view>
+        </view>
+      </view>
+    </view>
+    <view class="list_msg">
+      <navigator class="msg_box clearfix" url="../my-exchange/exchange-list/exchange-list">
+        <image src="../../../assets/img/exchange_icon.png" class="exchange_icon"></image>
+        <view class="msg_tit">我的兑换</view>
+        <image src="../../../assets/img/arrow.png" class="openDetail"></image>
+      </navigator>
+    </view>
+  </view>
+  <!-- 非会员 -->
+  <view class="outsider" wx:else>
+    <view class="baby_msg clearfix">
+      <view class="babyMsg_left">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class="babyMsg_right">
+        <view class="baby_name">{{userMsg.memberNick}}</view>
+        <view class="baby_phone">{{userMsg.mobilePhone}}</view>
+      </view>
+    </view>
+    <view class="list_msg">
+      <!-- <view class="msg_box clearfix">
+        <image src="../../../assets/img/baby_msg.png" class="babyMsg_icon"></image>
+        <view class="msg_tit">宝宝信息</view>
+        <image src="../../../assets/img/arrow.png" class="openDetail"></image>
+      </view> -->
+      <navigator class="msg_box clearfix" url="../my-exchange/exchange-list/exchange-list">
+        <image src="../../../assets/img/exchange_icon.png" class="exchange_icon"></image>
+        <view class="msg_tit">我的兑换</view>
+        <image src="../../../assets/img/arrow.png" class="openDetail"></image>
+      </navigator>
+    </view>
+  </view>
+  <view class="custom_serve" bindtap='tel'>
+    <view>客服电话：400-6321531</view>
+    <view>客服时间：09:00-18:00 周一至周日</view>
+  </view>
+</view>

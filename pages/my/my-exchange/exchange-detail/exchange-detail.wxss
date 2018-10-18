@@ -1,0 +1,27 @@
+.clearfix::after{display: block;height: 0;clear: both;content: ''}
+.course_img{width:100%;}
+.store_msg{background:#fff;padding:29rpx 31rpx 35rpx 31rpx;border-bottom:15rpx solid #F5F5F5;overflow:hidden;position:relative;}
+.store_name{width:82%;}
+.course_name{color:#333333;font-size:28rpx;font-weight:bold;padding-bottom:18rpx;}
+.store_address{padding-left:15rpx;}
+.map_icon{float:left;width:20rpx;height:30rpx;}
+.open_map{float:right;width:15rpx;height:26rpx;}
+.store_address{float:left;width:82%;color:#666;font-size:24rpx;}
+.store_distance{display:inline;color:#666;font-size:30rpx;padding-left:90rpx;text-align:right;}
+.phone{position:absolute;top:0;right:0;}
+.phone>image{width:41rpx;height:55rpx;padding:24rpx 44rpx 40rpx 30rpx;}
+.state_msg{background:#fff;padding:31rpx;border-bottom:15rpx solid #F5F5F5;}
+.exchange-code{float:left;color:#FF496E;font-size:28rpx;}
+.use_state{float:right;color:#FF496E;font-size:24rpx;}
+.exchange-code2{float:left;color:#666;font-size:28rpx;text-decoration:line-through;}
+.use_state2{float:right;color:#666;font-size:24rpx;}
+.course_box{padding-top:18rpx;}
+.course_key{float:left;color:#666;font-size:24rpx;}
+.course_val{float:right;color:#666;font-size:24rpx;}
+.store_msg3{background:#fff;padding:29rpx 31rpx 33rpx 31rpx;}
+.phone_key{float:left;color:#333;font-size:28rpx;}
+.phone_val{float:right;color:#333;font-size:24rpx;}
+.member_msg{color:#333;font-size:26rpx;padding-bottom:15rpx;}
+.warm_prompt{background:#fff;padding:29rpx 31rpx 35rpx 31rpx;}
+.warm_tit{color:#333333;font-size:28rpx;font-weight:bold;padding-bottom:18rpx;}
+.warm_cont{color:#666;font-size:24rpx;line-height:40rpx;}

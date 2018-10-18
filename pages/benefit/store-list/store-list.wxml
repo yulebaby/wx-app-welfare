@@ -1,0 +1,38 @@
+<view>
+  <view class="store_count">{{storeMsg.length}}店通用</view>
+  <view wx:for="{{storeMsg}}" wx:key="storeMsg" data-index="{{index}}" id="{{item.id}}" bindtap='selectStore'>
+    <view class="store_box"  >
+      <view class="store_list">
+        <view class="store_btn">
+          <image src="../../../assets/img/selected.png" class="selected" wx:if="{{orselect==index}}"></image>
+          <image src="../../../assets/img/noSelected.png" class="noSelected" wx:else></image>
+        </view>
+        <view class="store_msg">
+          <view class="store_text1 clearfix">
+            <view class="store_name">{{item.subbranchName}}</view>
+            <!-- <navigator url="../map/map?storeLng={{item.lng}}&storeLat={{item.lat}}&subbranchName={{item.subbranchName}}&detailAdd={{item.detailAdd}}" class="clearfix"><image src="../../../assets/img/arrow.png" class="open_map"></image></navigator> -->
+            <view class="navigator" data-lng="{{item.lng}}" data-lat="{{item.lat}}" data-storename="{{item.subbranchName}}" data-address="{{item.detailAdd}}" catchtap='mapclick'>
+              <image src="../../../assets/img/arrow.png" class="open_map"></image>
+            </view>
+          </view>
+          <view class="store_text2 clearfix">
+            <view class="store_address">{{item.detailAdd}}</view>
+            <view class="store_distance">{{item.distance}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="exchange_box clearfix">
+      <view class="member_price" wx:if="{{displayType=='exchange'}}">刷卡{{wareMsg.cardCount}}次</view>
+      <view class="nomember_price" wx:if="{{displayType=='buy'}}">￥{{wareMsg.sellPrice}}</view>
+      <view class="original_price" >￥{{wareMsg.productPrice}}</view>
+      <!-- 兑换 -->
+      <button class="nomember_exchange" id="exchange" wx:if="{{displayType=='exchange'}}" catchtap='submitStore' disabled='{{wareMsg.exchangeIsBuy==0 ? false : true}}'>刷{{wareMsg.cardCount}}次卡兑换</button>
+      <!-- 购买 -->
+      <button class="member_exchange" id="buy" wx:if="{{displayType=='buy'}}"  catchtap='submitStore' disabled='{{wareMsg.buyisBuy==0 ? false : true}}'>￥{{wareMsg.sellPrice}}购买</button>
+      <!-- 兑换和购买同时 -->
+      <button class="nomember_exchange1 " id="exchange" wx:if="{{displayType=='all' && wareMsg.buyStatus==0 || wareMsg.buyStatus==2}}" catchtap='submitStore' disabled='{{wareMsg.exchangeIsBuy==0 ? false : true}}'>刷{{wareMsg.cardCount}}次卡兑换</button>
+      <button class="all_btn" id="buy" wx:if="{{displayType=='all'  && wareMsg.buyStatus==1 || wareMsg.buyStatus==2}}"  catchtap='submitStore' disabled='{{wareMsg.buyisBuy==0 ? false : true}}'>￥{{wareMsg.sellPrice}}购买</button>
+    </view>
+  </view>
+</view>

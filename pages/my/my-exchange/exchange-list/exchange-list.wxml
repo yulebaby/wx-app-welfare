@@ -1,0 +1,48 @@
+<view>
+  <view class="no_exchange" wx:if="{{unused==''&&used==''&&overDue==''}}">
+    <image src="../../../../assets/img/no_exchange.png"></image>
+    <view>暂无福利兑换</view>
+  </view>
+  <view wx:else>
+    <view class="exist_exchange" >
+      <navigator class="exchange_box" url="../exchange-detail/exchange-detail?orderId={{item.orderId}}" wx:for="{{unused}}" wx:key="unused" >
+        <image src="../../../../assets/img/already_use.png"></image>
+        <view class="course_name">{{item.productName}}</view>
+        <view class="course_price consume_card" wx:if="{{item.cardCount}}">耗卡{{item.cardCount}}次</view>
+        <view class="course_price" wx:else>￥{{item.productPrice}}</view>
+        <view class="course_code">兑券号 {{item.orderNumber}}</view>
+        <view class="course_state">未使用</view>
+      </navigator>
+    </view>
+    <view class="use_state" wx:if="{{used!=''}}">
+      <view class="useModule">----------------------------</view>
+      已使用
+      <view class="useModule">----------------------------</view>
+    </view>
+    <view class="exist_exchange" >
+      <navigator class="exchange_box" url="../exchange-detail/exchange-detail?orderId={{item.orderId}}" wx:for="{{used}}" wx:key="used">
+        <image src="../../../../assets/img/no_use.png"></image>
+        <view class="course_name">{{item.productName}}</view>
+        <view class="course_price consume_card" wx:if="{{item.cardCount}}">耗卡{{item.cardCount}}次</view>
+        <view class="course_price" wx:else>￥{{item.productPrice}}</view>
+        <view class="usecourse_code">兑券号 {{item.orderNumber}}</view>
+        <view class="course_state">已使用</view>
+      </navigator>
+    </view>
+    <view class="use_state" wx:if="{{overDue!=''}}">
+      <view class="useModule">----------------------------</view>
+      已过期
+      <view class="useModule">----------------------------</view>
+    </view>
+    <view class="exist_exchange" >
+      <navigator class="exchange_box" url="../exchange-detail/exchange-detail?orderId={{item.orderId}}" wx:for="{{overDue}}" wx:key="overDue">
+        <image src="../../../../assets/img/no_use.png"></image>
+        <view class="course_name">{{item.productName}}</view>
+        <view class="course_price consume_card" wx:if="{{item.cardCount}}">耗卡{{item.cardCount}}次</view>
+        <view class="course_price" wx:else>￥{{item.productPrice}}</view>
+        <view class="usecourse_code">兑券号 {{item.orderNumber}}</view>
+        <view class="course_state">已过期</view>
+      </navigator>
+    </view>
+  </view>
+</view>

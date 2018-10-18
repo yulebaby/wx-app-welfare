@@ -7,37 +7,37 @@
  * @param param: object 请求参数
  * @return Promise
  * 
- * @author phuhoang
+ * @author phuhoang 
  * @time 2018-01-16
  */
+const App = getApp();
 
-const Domain = getApp().domain;
-
-const Get = (url, param) => {
+const Get = (url, params, ) => {
   return new Promise((resolve, reject) => {
-    let requestPath = url.substr(0, 4) === 'http' ? url : `${Domain}${url}`;
+    let requestPath = url.substr(0, 4) === 'http' ? url : `${App.domain + url}`;
     wx.request({
       url: requestPath,
       method: 'GET',
-      data: param,
+      data: params,
       dataType: 'json',
       success(res) {
         resolve(res.data);
       },
       fail(err) {
         reject(err);
+        wx.hideLoading();
       }
     });
   });
 }
 
-const Post = (url, param) => {
+const Post = (url, params) => {
   return new Promise((resolve, reject) => {
-    let requestPath = url.substr(0, 4) === 'http' ? url : `${Domain}${url}`;
+    let requestPath = url.substr(0, 4) === 'http' ? url : `${App.domain + url}`;
     wx.request({
       url: requestPath,
       method: "POST",
-      data: Serialize(param),
+      data: Serialize(params),
       dataType: 'json',
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -47,6 +47,7 @@ const Post = (url, param) => {
       },
       fail(err) {
         reject(err);
+        wx.hideLoading();
       }
     })
   })
@@ -60,8 +61,6 @@ const Serialize = (data) => {
   }
   return val.slice(0, val.length - 1);
 }
-
-
 module.exports = {
   get: Get,
   post: Post

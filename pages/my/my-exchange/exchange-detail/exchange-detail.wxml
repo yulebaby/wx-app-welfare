@@ -1,0 +1,59 @@
+<view>
+  <image src="{{detailMsg.coverPic}}" class="course_img"></image>
+  <view class="store_msg">
+    <view class="store_name">
+      {{detailMsg.subbranchName}}
+      <!-- <view class="store_distance"><image src="../../../../assets/img/addresss_ico.png"></image>{{detailMsg.distance}}</view> -->
+    </view>
+    <!-- <view class="address_box clearfix">
+      <view class="store_address">{{detailMsg.subbranchAdd}}</view>
+    </view> -->
+    <view class="phone" id="{{detailMsg.subbranchPhone}}" bindtap='tel'>
+      <image src="../../../../assets/img/phone.png" ></image>
+    </view>
+  </view>
+  <view class="store_msg " data-lng="{{detailMsg.lng}}" data-lat="{{detailMsg.lat}}"  data-storename="{{detailMsg.subbranchName}}" data-address="{{detailMsg.subbranchAdd}}" bindtap='mapclick'>
+    <view class="address_box clearfix">
+      <image src="../../../../assets/img/addresss_icon.png" class="map_icon"></image>
+      <view class="store_address">{{detailMsg.subbranchAdd}}</view>
+      <image src="../../../../assets/img/arrow.png" class="open_map"></image>
+    </view>
+  </view>
+  <view class="state_msg clearfix" wx:if="{{detailMsg.status==0}}">
+    <view class="exchange-code">兑换券号 {{detailMsg.orderNumber}}</view>
+    <view class="use_state">待使用</view>
+  </view>
+  <view class="state_msg clearfix" wx:else>
+    <view class="exchange-code2">兑换券号 {{detailMsg.orderNumber}}</view>
+    <view class="use_state2" wx:if="{{detailMsg.status==1}}">已使用</view>
+    <view class="use_state2" wx:if="{{detailMsg.status==2}}">已过期</view>
+  </view>
+  <view class="store_msg">
+    <view class="course_name">{{detailMsg.productName}}</view>
+    <view>
+      <view class="course_box clearfix">
+        <view class="course_key">换购数量</view>
+        <view class="course_val">1份</view>
+      </view>
+      <view class="course_box clearfix" wx:if="{{detailMsg.payType==1}}">
+        <view class="course_key">价格</view>
+        <view class="course_val">￥{{detailMsg.sellPrice}}</view>
+      </view>
+      <view class="course_box clearfix" wx:else>
+        <view class="course_key">消耗卡次</view>
+        <view class="course_val">{{detailMsg.cardCount}}次</view>
+      </view>
+    </view>
+  </view>
+  <view class="state_msg">
+    <view class="member_msg">兑换时间： {{detailMsg.reserveTime}}</view>
+    <view class="member_msg">手机号： {{detailMsg.mobilePhone}}</view>
+    <!-- <view class="member_msg" wx:if="{{member}}">会员ID： {{detailMsg.memberId}}</view> -->
+  </view>
+  <view class="warm_prompt">
+    <view class="warm_tit">温馨提示</view>
+    <view class="warm_cont">1、请提前到达门店，对门店工作人员出示劵号，门店工作人员核对无误即可获得相应的服务。</view>
+    <view class="warm_cont">2、门店服务均为预约制，需与门店预约好时间。</view>
+    <view class="warm_cont">3、服务由{{detailMsg.subbranchName}}提供。</view>
+  </view>
+</view>
