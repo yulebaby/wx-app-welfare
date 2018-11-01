@@ -88,31 +88,33 @@ Page({
     }
   },
   submit(payType){
-    if (this.data.selectNo) {
-      if (app.userInfo.member ==1 || app.userInfo.status == 1) {
+    if (app.userInfo.member == 1 || app.userInfo.status == 1) {
+      if (this.data.selectNo) {
         wx.navigateTo({
           url: '../submit/submit?type=' + payType + '&selectedStore=' + this.data.selectedStore + '&productId=' + this.data.productId,
         })
       } else {
-        wx.navigateTo({
-          url: '../../my/bind-phone/bind-phone',
+        wx.showModal({
+          // title: '提示',
+          content: '请选择门店',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            } else {
+              console.log('用户点击取消')
+            }
+
+          }
         })
       }
+      
     } else {
-      wx.showModal({
-        // title: '提示',
-        content: '请选择门店',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          } else {
-            console.log('用户点击取消')
-          }
-
-        }
+      wx.navigateTo({
+        url: '../../my/bind-phone/bind-phone',
       })
     }
+    
   },
 
 

@@ -12,7 +12,8 @@ Page({
     cityName: '',
     index: 0,
     selectCity: '',
-    chiefStatus: true
+    chiefStatus: true,
+    address_menb:false
   },
   onLoad: function (options) {
     console.log('获取电话号码')
@@ -24,17 +25,26 @@ Page({
       this.getaddressIndex();
     })
   },
+  onShow: function(){
+    this.getaddressIndex();
+  },
   /* ------------------- 获取用户地理位置信息 ------------------- */
   getaddressIndex() {
     getAddress(address => {
       console.log(address)
-      app.userInfo.address = address;
-      app.userInfo.city = address.address_component.city;
-      app.userInfo.lng = address.location.lng;
-      app.userInfo.lat = address.location.lat;
-      this.wareType();
-      this.getBanner();
-      this.cutType();
+      if(!address){
+        this.setData({ address_menb : true})
+      }else{
+        this.setData({ address_menb: false })
+        app.userInfo.address = address;
+        app.userInfo.city = address.address_component.city;
+        app.userInfo.lng = address.location.lng;
+        app.userInfo.lat = address.location.lat;
+        this.wareType();
+        this.getBanner(address.address_component.city);
+        this.cutType();
+      }
+      
       wx.hideLoading();
     })
   },
@@ -46,11 +56,25 @@ Page({
     })
   },
   /*获取banner*/
-  getBanner() {
+  getBanner(a) {
     let that = this;
-    console.log(that.data.cityName)
-    Http.post('/welfareBanner', { cityName: that.data.cityName }).then(res => {
+    let ocity;
+    console.log(a)
+    if(a){
+      ocity = a;
+    }else{
+      ocity = that.data.cityName
+    }
+    Http.post('/welfareBanner', { cityName: ocity}).then(res => {
       if (res.result == 0 && res.bannerList) {
+        console.log(res.bannerList.length)
+        for (var i = 0; i < res.bannerList.length;i++){
+          console.log(res.bannerList[i].productId)
+          res.bannerList[i].productId = res.bannerList[i].productId+'';
+          if (res.bannerList[i].productId.indexOf('http') != -1){
+            res.bannerList.splice(0,1)
+          }
+        }
         this.setData({ swiperArray: res.bannerList })
       }
       wx.hideLoading();
@@ -106,13 +130,13 @@ Page({
         wx.hideLoading();
         console.log(res.commercialProductResult.commercialProductResult)
         var unBuy = res.commercialProductResult.commercialProductResult;
-        var buy = res.commercialProductResult.usedProductList;
-        var allWarelist = unBuy.concat(buy);
-        for (var i = 0; i < allWarelist.length; i++) {
-          allWarelist[i].intro = allWarelist[i].intro.split(',')
+        // var buy = res.commercialProductResult.usedProductList;
+        // var allWarelist = unBuy.concat(buy);
+        for (var i = 0; i < unBuy.length; i++) {
+          unBuy[i].intro = unBuy[i].intro.split(',')
         }
-        console.log(allWarelist)
-        this.setData({ wareList: allWarelist })
+        console.log(unBuy)
+        this.setData({ wareList: unBuy })
         wx.hideLoading();
       }
 
@@ -134,7 +158,7 @@ Page({
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.wareType();
-    this.getBanner();
+    this.getBanner(app.userInfo.city);
     this.cutType();
     //模拟加载
     setTimeout(function () {

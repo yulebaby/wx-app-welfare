@@ -13,7 +13,7 @@ swiper image{
 .intro{float:left;color:#FF7449;font-size:20rpx;background:#FEF0EB;padding:5rpx 10rpx;border:1rpx solid #FF7449;border-radius:5rpx;margin:0 8rpx;}
 .teamBuy-box{padding:20rpx 0 0rpx 29rpx;}
 .teamBuy-img{float:left;width:97rpx;height:45rpx;position:relative;}
-.team_text{color:#fff;font-size:22rpx;position:absolute;top:11rpx;left:14rpx;z-index:999;}
+.team_text{color:#fff;font-size:22rpx;position:absolute;top:8rpx;left:14rpx;z-index:999;}
 .team_price{float:left;color:#FF496E;padding-top:5rpx;font-size:36rpx;}
 .team_price1{float:left;color:#FF496E;padding:7rpx 15rpx 0;font-size:30rpx;}
 .original_price{float:left;color:#999;font-size:24rpx;padding:15rpx 0 0 8rpx;text-decoration:line-through;}
@@ -63,3 +63,29 @@ swiper image{
 .member_btn1{float:right;width:520rpx;height:95rpx;color:#fff;font-size:30rpx;background:#FF496E;line-height:95rpx;border:none;border-radius:0;
 }
 .copyright{color:#AAA;font-size:20rpx;background:#F5F5F5;padding:25rpx 0;text-align:center;}
+
+/* 打开定位 */
+.menb{
+  background:rgba(0,0,0,0.5);
+  height: 100vh;
+}
+.prompt{
+  width:580rpx;
+  background:#fff;
+  margin:0 auto;
+  border-radius:10rpx;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-290rpx;
+  margin-top:-150rpx;
+}
+.prompt_tit{
+  padding:25rpx 0;
+  text-align:center;
+}
+.prompt_cont{
+  font-size:30rpx;
+  padding:10rpx 0 30rpx;
+  text-align: center;
+}

@@ -12,12 +12,8 @@ Page({
     swiperArray: [],
     wareMsg:'',
     storeMsg:'',
-    display:null,
-    // 调接口所传参数
-    data: '',
-    productId: null,
-    address_menb: false,
-    displayH5:false
+    productId:null,
+    display:null
   },
 
   /**
@@ -26,12 +22,12 @@ Page({
   onLoad: function (options) {
     console.log('福利详情')
     console.log(options)
-    if (options.origin == 'app'){
+    if(options.origin == 'app'){
       this.setData({
         display: 'detail',
         productId: options.productId
       })
-      getUserInfo.login('', loginMsg => {
+      getUserInfo.login(options.phone, loginMsg => {
         wx.showLoading({ title: '加载中...', mask: true });
         console.log('获取信息成功')
         console.log(loginMsg)
@@ -54,37 +50,15 @@ Page({
     }
     
   },
-  onShow: function () {
-    this.getaddressIndex();
-  },
   /* ------------------- 获取用户地理位置信息 ------------------- */
   getaddressIndex() {
     getAddress(address => {
       console.log(address)
-      if (!address) {
-        this.setData({ address_menb: true })
-      } else {
-        this.setData({ address_menb: false })
-        app.userInfo.address = address;
-        app.userInfo.city = address.address_component.city;
-        app.userInfo.lng = address.location.lng;
-        app.userInfo.lat = address.location.lat;
-        let data={
-          openId: app.userInfo.openid,
-          cityName: app.userInfo.city,
-          lng: app.userInfo.lng,
-          lat: app.userInfo.lat,
-          productId: this.data.productId,
-          different:'detail'
-        };
-        let data1 = JSON.stringify(data);
-        this.setData({
-          data: encodeURIComponent(data1),
-          // "openId=" + app.userInfo.openid + "&cityName=" + app.userInfo.city + "&lng=" + app.userInfo.lng + "&lat=" + app.userInfo.lat + "&different=detail&",
-          displayH5:true
-        })
-        // this.wareDetail()
-      }
+      app.userInfo.address = address;
+      app.userInfo.city = address.address_component.city;
+      app.userInfo.lng = address.location.lng;
+      app.userInfo.lat = address.location.lat;
+      this.wareDetail()
       wx.hideLoading();
     })
   },
@@ -95,7 +69,13 @@ Page({
     Http.post('/commercialProductDetail', { openId: app.userInfo.openid, cityName: app.userInfo.city,  productId: that.data.productId, lng: app.userInfo.lng, lat: app.userInfo.lat, different: 'detail' }).then(res => {
       wx.hideLoading();
       if (res.result == 0 && res.productContent){
-       
+        //富文本转换
+        res.productContent[0].brandDesc = res.productContent[0].brandDesc.replace(/(<\/?spanyes.*?>)/g, '');
+        var reg = /style\s*?=\s*?([‘"])[\s\S]*?\1/;
+        var article = res.productContent[0].brandDesc;//article是取到的数据
+        article = article.replace(/<style(([\s\S])*?)<\/style>/g, '');
+        article = article.replace(reg, '');
+        WxParse.wxParse('article', 'html', article, that, 5);
 
         res.productContent[0].carouselPic = res.productContent[0].carouselPic.split(",");
         res.productContent[0].intro = res.productContent[0].intro.split(",");

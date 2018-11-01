@@ -1,0 +1,65 @@
+.clearfix::after{display: block;height: 0;clear: both;content: ''}
+.wareDetail_cont{padding-bottom:97rpx;}
+/* ------------------- banner ------------------- */
+swiper{height:480rpx;}
+swiper image{
+   width: 750rpx;
+   /* height: 240rpx; */
+}
+/* ------------------- 商品信息 ------------------- */
+.ware_msg{padding:0 31rpx 37rpx 0;border-bottom:15rpx solid #f5f5f5;}
+.ware_name{color:#333;font-size:28rpx;font-weight:bold;padding:20rpx 0 20rpx 29rpx;}
+.intro_box{padding-left:21rpx}
+.intro{float:left;color:#FF7449;font-size:20rpx;background:#FEF0EB;padding:5rpx 10rpx;border:1rpx solid #FF7449;border-radius:5rpx;margin:0 8rpx;}
+.teamBuy-box{padding:20rpx 0 0rpx 29rpx;}
+.teamBuy-img{float:left;width:97rpx;height:45rpx;position:relative;}
+.team_text{color:#fff;font-size:22rpx;position:absolute;top:8rpx;left:14rpx;z-index:999;}
+.team_price{float:left;color:#FF496E;padding-top:5rpx;font-size:36rpx;}
+.team_price1{float:left;color:#FF496E;padding:7rpx 15rpx 0;font-size:30rpx;}
+.original_price{float:left;color:#999;font-size:24rpx;padding:15rpx 0 0 8rpx;text-decoration:line-through;}
+
+
+.price_box{padding-top:14rpx;}
+.member_msg{float:left;color:#FF496E;font-size:24rpx;padding-left:29rpx;}
+.member_consumCard{float:left;}
+.member_consumCard1{float:left;padding-top:15rpx;}
+.exchange_count{float:right;color:#999;font-size:24rpx;}
+.exchange_count1{float:right;color:#999;font-size:24rpx;padding-top:15rpx;}
+/* ------------------- 品牌介绍或富文本 ------------------- */
+.brand_des{padding:0 30rpx 30rpx;border-bottom:15rpx solid #f5f5f5;}
+.brand_box{padding-top:41rpx;}
+.brand_tit{color:#333;font-size:26rpx;padding-bottom:40rpx;border-bottom:1rpx solid #F0F0F0;}
+.brand_cont{color:#333;font-size:24rpx;padding-top:29rpx;line-height:40rpx;}
+.richText{font-size:28rpx;}
+/* ------------------- 活动须知 ------------------- */
+.active_msg{padding:41rpx 30rpx 41rpx 30rpx;border-bottom:15rpx solid #f5f5f5;}
+.active_tit{color:#333;font-size:26rpx;padding-bottom:40rpx;border-bottom:1rpx solid #F0F0F0;}
+.active_key{color:#999;font-size:24rpx;padding:29rpx 0 19rpx 0}
+.active_val{color:#333;font-size:24rpx;}
+.active_val2{color:#333;font-size:24rpx;line-height:40rpx;}
+/* ------------------- 门店地址 ------------------- */
+.address_msg{padding:36rpx 30rpx 0 30rpx;border-bottom:15rpx solid #f5f5f5;position:relative;}
+.address_tit{color:#333;font-size:28rpx;}
+.navigator{width:100rpx;height:50rpx;padding:10rpx 30rpx 20rpx;position:absolute;right:29rpx;top:39rpx;}
+.open_map{float:right;width:13rpx;height:23rpx;}
+.address_box{color:#666;font-size:24rpx;padding:25rpx 0 35rpx 0;border-bottom:1rpx solid #F0F0F0;}
+.address_detail{float:left;width:82%;}
+.address_distance{float:right;}
+.goToStoreList{padding:31rpx 29rpx 35rpx 0;}
+.store_num{float:left;color:#FF496E;font-size:24rpx;}
+.goToStoreList>image{float:right;width:13rpx;height:23rpx;}
+/* ------------------- 购买 ------------------- */
+.exchange-btn{width:100%;background:#fff;position:fixed;bottom:0;}
+.custom_service,.homePage{float:left;color:#666;font-size:24rpx;background:#fff;padding:15rpx 33rpx 11rpx 34rpx;text-align:center;}
+.custom_service{border-right:1rpx solid #F0F0F0;}
+.custom_service>image{width:32rpx;height:32rpx;}
+.homePage>image{width:32rpx;height:32rpx;}
+.noMember{float:right;width:260rpx;height:95rpx;color:#fff;font-size:30rpx;background:#5597F5;line-height:95rpx;border:none;border-radius:0;text-align:center;
+}
+.noMember1{float:right;width:520rpx;height:95rpx;color:#fff;font-size:30rpx;background:#FF496E;line-height:95rpx;border:none;border-radius:0;text-align:center;
+}
+.member_btn{float:right;width:260rpx;height:95rpx;color:#fff;font-size:30rpx;background:#FF496E;line-height:95rpx;border:none;border-radius:0;
+}
+.member_btn1{float:right;width:520rpx;height:95rpx;color:#fff;font-size:30rpx;background:#FF496E;line-height:95rpx;border:none;border-radius:0;
+}
+.copyright{color:#AAA;font-size:20rpx;background:#F5F5F5;padding:25rpx 0;text-align:center;}

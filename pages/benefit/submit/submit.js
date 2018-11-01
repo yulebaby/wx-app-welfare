@@ -16,7 +16,9 @@ Page({
     userMsg:{},
     distance:'',
     exchangeSuccess:false,
-    residueCount:''
+    residueCount:'',
+    orChange:true,
+    limit_click: 'auto'
   },
 
   /**
@@ -61,37 +63,51 @@ Page({
       title: '加载中',
       mask: true
     })
-    let that=this;
-    Http.get('/saveOrder', { subbranchId: that.data.subbranchId, openId: app.userInfo.openid, productId: that.data.productId }).then(res => {
-      if (res.result == 0) {
-        console.log(res)
-        that.setData({ 
-          orderId: res.orderId,
-          residueCount: res.residueCount,
-          exchangeSuccess:true
-        });
-        console.log(that.data.orderId)
-        wx.hideLoading();
-      }else{
-        wx.hideLoading();
-        wx.showModal({
-          // title: '提示',
-          content: '兑换失败',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            } else {
-              console.log('用户点击取消')
-            }
+    let that = this;
+    if (this.data.orChange){
+      console.log(1)
+      this.setData({ orChange: false });
+      Http.get('/saveOrder', { subbranchId: that.data.subbranchId, openId: app.userInfo.openid, productId: that.data.productId }).then(res => {
+        if (res.result == 0) {
+          console.log(res)
+          that.setData({
+            orderId: res.orderId,
+            residueCount: res.residueCount,
+            exchangeSuccess: true,
+            orChange: true
+          });
+          console.log(that.data.orderId)
+          wx.hideLoading();
+        } else {
+          this.setData({ orChange: true });
+          wx.hideLoading();
+          wx.showModal({
+            // title: '提示',
+            content: '兑换失败',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else {
+                console.log('用户点击取消')
+              }
 
-          }
-        })
-      }
-      
-    }, _ => {
-      wx.hideLoading();
-    });
+            }
+          })
+        }
+
+      }, _ => {
+        wx.hideLoading();
+      });
+    }
+    
+    
+  },
+  buy(){
+    this.setData({ limit_click: 'none' })
+    setTimeout(function () {
+      this.setData({ limit_click: 'auto' })
+    }, 1500)
   },
   know(){
     let that =this;

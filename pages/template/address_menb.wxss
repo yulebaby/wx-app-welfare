@@ -1,0 +1,14 @@
+.menb{
+  /* background:rgba(0,0,0,0.5); */
+  background:red;
+}
+.prompt{
+  width:580rpx;
+  background:#fff;
+  margin:0 auto;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-290rpx;
+  margin-top:-150rpx;
+}

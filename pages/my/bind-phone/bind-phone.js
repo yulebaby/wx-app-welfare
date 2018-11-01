@@ -57,13 +57,17 @@ Page({
         that.errorPrompt('', '');
         if (that.data.phoneValue.length == 11) {
           console.log(that.data.clickSendCode)
-          that.getCode();
-          that.setData({
-            clickSendCode: false
-          })
+          
           console.log(that.data.clickSendCode)
           Http.post('/sendVerification', { mobilePhone: that.data.phoneValue }).then(res => {
-            if (res.result == 0) {}
+            if (res.result == 0) {
+              that.getCode();
+              that.setData({
+                clickSendCode: false
+              })
+            } else if (res.result == 2){
+              that.errorPrompt('', res.message);
+            }
           }, _ => {
 
           });

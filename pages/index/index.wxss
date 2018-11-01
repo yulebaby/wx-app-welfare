@@ -1,3 +1,4 @@
+@import "../template/address_menb.wxss";
 page>view{overflow:hidden;}
 .section{font-size:26rpx;padding-top:10rpx;margin-bottom:30rpx;text-align:center;}
 .picker{display:inline-block;}
@@ -55,3 +56,25 @@ swiper image{
 .menb{width:100%;height:100%;background:rgba(0,0,0,0.5);padding-top:80rpx;position:fixed;top:0;text-align:center;}
 .assessment_img{width:560rpx;}
 .close_img{width:98rpx;display:block;margin:-10rpx auto 0;}
+
+.menb{
+  background:rgba(0,0,0,0.5);
+}
+.prompt{
+  width:580rpx;
+  background:#fff;
+  margin:0 auto;
+  border-radius:10rpx;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-290rpx;
+  margin-top:-150rpx;
+}
+.prompt_tit{
+  padding:25rpx 0;
+}
+.prompt_cont{
+  font-size:30rpx;
+  padding:10rpx 0 30rpx;
+}

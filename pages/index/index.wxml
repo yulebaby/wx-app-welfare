@@ -1,4 +1,7 @@
 <view>
+  <!-- <import src="../template/address_menb.wxml"/>
+  <template is="address_menb"></template> -->
+  <!-- <button class='open_position'   open-type="openSetting" bindopensetting='handleSetting' >设置允许打开定位</button> -->
   <view class="section">
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{cityList}}" >
       <view class="picker" >
@@ -53,8 +56,12 @@
       <image src='../../assets/img/newShop.png' class="new-ware" wx:if="{{item.isNew}}"></image>
     </navigator>
   </view>
-  <!-- <view class="menb" wx:if="{{chiefStatus}}">
-    <image src="../../assets/img/chief-assessment/chief-assessment.png" class="assessment_img" mode='widthFix'></image>
-    <image src="../../assets/img/chief-assessment/close-chief.png" class="close_img" mode='widthFix' bindtap='closeChief'></image>
-  </view> -->
+  
+  <view class="menb" wx:if="{{address_menb}}">
+    <view class="prompt">
+      <view class="prompt_tit">获取用户地址失败</view>
+      <view class="prompt_cont">请在设置页允许获取所在地址</view>
+      <button class='open_position'   open-type="openSetting" bindopensetting='handleSetting' >确定</button>
+    </view>
+  </view>
 </view>

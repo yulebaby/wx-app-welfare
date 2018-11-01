@@ -22,7 +22,9 @@
         </view>
       </view>
     </view>
-    <view class="exchange_box clearfix">
+    
+  </view>
+  <view class="exchange_box clearfix">
       <view class="member_price" wx:if="{{displayType=='exchange'}}">刷卡{{wareMsg.cardCount}}次</view>
       <view class="nomember_price" wx:if="{{displayType=='buy'}}">￥{{wareMsg.sellPrice}}</view>
       <view class="original_price" >￥{{wareMsg.productPrice}}</view>
@@ -31,8 +33,7 @@
       <!-- 购买 -->
       <button class="member_exchange" id="buy" wx:if="{{displayType=='buy'}}"  catchtap='submitStore' disabled='{{wareMsg.buyisBuy==0 ? false : true}}'>￥{{wareMsg.sellPrice}}购买</button>
       <!-- 兑换和购买同时 -->
-      <button class="nomember_exchange1 " id="exchange" wx:if="{{displayType=='all' && wareMsg.buyStatus==0 || wareMsg.buyStatus==2}}" catchtap='submitStore' disabled='{{wareMsg.exchangeIsBuy==0 ? false : true}}'>刷{{wareMsg.cardCount}}次卡兑换</button>
-      <button class="all_btn" id="buy" wx:if="{{displayType=='all'  && wareMsg.buyStatus==1 || wareMsg.buyStatus==2}}"  catchtap='submitStore' disabled='{{wareMsg.buyisBuy==0 ? false : true}}'>￥{{wareMsg.sellPrice}}购买</button>
+      <button class="nomember_exchange1 " id="exchange" wx:if="{{displayType!='exchange'&& displayType!='buy' && (wareMsg.buyStatus==0 || wareMsg.buyStatus==2)}}" catchtap='submitStore' disabled='{{wareMsg.exchangeIsBuy==0 ? false : true}}'  style="width:{{wareMsg.buyStatus!=2 ? '480rpx' :'260rpx'}}">刷{{wareMsg.cardCount}}次卡兑换</button>
+      <button class="all_btn" id="buy" wx:if="{{displayType!='exchange'&& displayType!='buy'  && (wareMsg.buyStatus==1 || wareMsg.buyStatus==2)}}"  catchtap='submitStore' disabled='{{wareMsg.buyisBuy==0 ? false : true}}'>￥{{wareMsg.sellPrice}}购买</button>
     </view>
-  </view>
 </view>

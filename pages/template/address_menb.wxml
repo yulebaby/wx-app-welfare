@@ -1,0 +1,7 @@
+<template name="address_menb">
+  <view class="menb" wx:if="{{orPosition}}">
+    <view class="prompt">
+      <button class='open_position'   open-type="openSetting" bindopensetting='handleSetting' >设置允许打开定位</button>
+    </view>
+  </view>
+</template>

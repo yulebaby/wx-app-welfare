@@ -11,5 +11,5 @@ page{background:#F5F5F5;}
 .course_code,.usecourse_code{color:#666;font-size:24rpx;position:absolute;bottom:18rpx;left:29rpx;}
 .usecourse_code{text-decoration:line-through;}
 .course_state{color:#666;font-size:24rpx;position:absolute;bottom:18rpx;right:26rpx;}
-.use_state{width:100%;color:#AAAAAA;font-size:20rpx;margin:40rpx auto;text-align:center;}
+.use_state{width:100%;color:#AAAAAA;font-size:20rpx;margin:40rpx 15rpx;text-align:center;box-sizing:border-box;overflow-x:hidden;}
 .useModule{color:#eee;font-size:20rpx;text-align: center;display:inline-block;}

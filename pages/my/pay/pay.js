@@ -61,7 +61,7 @@ Page({
                     wx.navigateTo({
                       url: '../my-exchange/exchange-detail/exchange-detail?orderId=' + that.data.orderId + '&origin=buy',
                     })
-                  }, 1000)
+                  }, 1300)
                 } else {
                   wx.hideLoading();
                   wx.showModal({

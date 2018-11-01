@@ -51,7 +51,7 @@
     <view>提交即表示同意商家电话咨询我如何到店</view>
   </view>
   <button class="submit_btn" wx:if="{{displayType=='exchange'}}" bindtap='exchange'>去兑换</button>
-  <navigator class="submit_btn" url="../../my/pay/pay?sellPrice={{courseMsg.sellPrice}}&subbranchId={{subbranchId}}&productId={{productId}}" wx:else >去支付</navigator>
+  <navigator class="submit_btn" url="../../my/pay/pay?sellPrice={{courseMsg.sellPrice}}&subbranchId={{subbranchId}}&productId={{productId}}" wx:else bindtap='buy' style="pointer-events:{{limit_click}}">去支付</navigator>
   <view class="menb" wx:if="{{exchangeSuccess}}">
     <view class="prompt">
       <view class="prompt_tit">换购成功</view>

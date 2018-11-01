@@ -15,9 +15,9 @@
       </navigator>
     </view>
     <view class="use_state" wx:if="{{used!=''}}">
-      <view class="useModule">----------------------------</view>
-      已使用
-      <view class="useModule">----------------------------</view>
+      <!-- <view class="useModule">----------------------------</view> -->
+      ----------------------------已使用----------------------------
+      <!-- <view class="useModule">----------------------------</view> -->
     </view>
     <view class="exist_exchange" >
       <navigator class="exchange_box" url="../exchange-detail/exchange-detail?orderId={{item.orderId}}" wx:for="{{used}}" wx:key="used">
@@ -30,9 +30,9 @@
       </navigator>
     </view>
     <view class="use_state" wx:if="{{overDue!=''}}">
-      <view class="useModule">----------------------------</view>
-      已过期
-      <view class="useModule">----------------------------</view>
+      <!-- <view class="useModule">----------------------------</view> -->
+      ----------------------------已过期----------------------------
+      <!-- <view class="useModule">----------------------------</view> -->
     </view>
     <view class="exist_exchange" >
       <navigator class="exchange_box" url="../exchange-detail/exchange-detail?orderId={{item.orderId}}" wx:for="{{overDue}}" wx:key="overDue">

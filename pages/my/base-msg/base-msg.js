@@ -31,12 +31,12 @@ Page({
   /*提交宝宝信息*/
   babyBaseMsg() {
     let that=this;
-    var nameTest =/^[a-zA-Z0-9\u4e00-\u9fa5]{3,10}$/;
+    var nameTest = /^[a-zA-Z0-9\u4e00-\u9fa5]{1,10}$/;
     if (!this.data.nameValue){
       this.errorPrompt('昵称不能为空','','')
       console.log(this.data.relationshipIndex)
     } else if (!nameTest.test(this.data.nameValue)){
-      this.errorPrompt('昵称为3-10个汉字、中文或英文', '', '')
+      this.errorPrompt('昵称为1-10个数字、中文或英文', '', '')
     } else if (this.data.date && this.data.date=='宝宝生日'){
       this.errorPrompt('', '请选择宝宝生日', '')
     } else if (this.data.relationshipIndex == null){
@@ -53,7 +53,8 @@ Page({
         console.log(res)
         if (res.result == 0) {
           app.userInfo.babyMsgStatus=1;
-          Http.post('http://192.168.1.110:8090/customerDetail/checkNoVerifyNum', { spreadId: 36, phone: app.userInfo.phone, babyName: that.data.nameValue, birthday: that.data.date }).then(res => {
+          // Http.post('http://192.168.1.110:8090/customerDetail/checkNoVerifyNum', { spreadId: 36, phone: app.userInfo.phone, babyName: that.data.nameValue, birthday: that.data.date }).then(res => {
+          Http.post('https://sale.beibeiyue.com/kb/customerDetail/checkNoVerifyNum', { spreadId: 36, phone: app.userInfo.phone, babyName: that.data.nameValue, birthday: that.data.date }).then(res => {
             if (res.code == 1000) {
 
               wx.showToast({

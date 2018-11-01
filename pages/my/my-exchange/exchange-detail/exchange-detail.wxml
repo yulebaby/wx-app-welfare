@@ -1,5 +1,5 @@
 <view>
-  <image src="{{detailMsg.coverPic}}" class="course_img"></image>
+  <image src="{{detailMsg.coverPic}}" class="course_img" mode="widthFix"></image>
   <view class="store_msg">
     <view class="store_name">
       {{detailMsg.subbranchName}}
@@ -43,12 +43,11 @@
         <view class="course_key">消耗卡次</view>
         <view class="course_val">{{detailMsg.cardCount}}次</view>
       </view>
+      <view class="course_box clearfix">
+        <view class="course_key">兑换时间</view>
+        <view class="course_val">{{detailMsg.reserveTime}}</view>
+      </view>
     </view>
-  </view>
-  <view class="state_msg">
-    <view class="member_msg">兑换时间： {{detailMsg.reserveTime}}</view>
-    <view class="member_msg">手机号： {{detailMsg.mobilePhone}}</view>
-    <!-- <view class="member_msg" wx:if="{{member}}">会员ID： {{detailMsg.memberId}}</view> -->
   </view>
   <view class="warm_prompt">
     <view class="warm_tit">温馨提示</view>

@@ -1,8 +1,10 @@
 //app.js
 App({
-  domain: 'http://192.168.1.212:8888/s',
-  // domain: 'http://tmobile.beibeiyue.cn/s',
-  domain_clue: 'http://192.168.1.110:8090/customerDetail/checkNoVerifyNum',
+  // domain: 'http://192.168.1.212:8888/s',       //本地
+  // domain: 'http://tmobile.beibeiyue.cn/s',  //83
+  domain: 'https://fuli.beibeiyue.com/s',        //线上
+  // domain_clue: 'http://192.168.1.110:8090/customerDetail/checkNoVerifyNum',
+  domain_clue: 'https://sale.beibeiyue.com/kb/customerDetail/checkNoVerifyNum',
   /* ------------- ------------- 全局数据存储 -------------------------- */
   globalData: {
     userOpenid: null,
