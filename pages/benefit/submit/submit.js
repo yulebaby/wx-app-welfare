@@ -78,7 +78,39 @@ Page({
           });
           console.log(that.data.orderId)
           wx.hideLoading();
-        } else {
+        } else if (res.result == 2){
+          this.setData({ orChange: true });
+          wx.hideLoading();
+          wx.showModal({
+            // title: '提示',
+            content: res.message,
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else {
+                console.log('用户点击取消')
+              }
+
+            }
+          })
+        } else if (res.result == -1) {
+          this.setData({ orChange: true });
+          wx.hideLoading();
+          wx.showModal({
+            // title: '提示',
+            content: '兑换失败',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else {
+                console.log('用户点击取消')
+              }
+
+            }
+          })
+        }else {
           this.setData({ orChange: true });
           wx.hideLoading();
           wx.showModal({
@@ -104,9 +136,10 @@ Page({
     
   },
   buy(){
+    let that = this;
     this.setData({ limit_click: 'none' })
     setTimeout(function () {
-      this.setData({ limit_click: 'auto' })
+      that.setData({ limit_click: 'auto' })
     }, 1500)
   },
   know(){

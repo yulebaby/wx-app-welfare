@@ -14,16 +14,5 @@
       </view>
     </view>
   </view>
-  <!-- <view class="order_msg">
-    <view class="pay_time">请在<view >2018-07-07 21:13:29</view> 前完成支付</view>
-    <view class="pay_time">逾期将自动取消订单</view>
-  </view> -->
-  <!-- <view class="step">
-    <view>如果进行大额支付，可选择：</view>
-    <view>1、可将款项先充入微信钱包账户内，然后使用账户余额进行一次性大额支付。</view>
-    <view>2、再次“订单支付”选择多次支付。</view>
-    <view>3、进入“我的”-“待支付”页面进行分次支付。</view>
-  </view> -->
-
   <view class="pay_btn" bindtap='pay'>确认支付</view>
 </view>

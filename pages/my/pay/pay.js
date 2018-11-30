@@ -31,7 +31,6 @@ Page({
       mask:true
     })
     if (this.data.payBtn){
-      console.log(1121251)
       this.setData({ payBtn :false})
       Http.get('/payOrderReturnCode', { openId: app.userInfo.openid, subbranchId: that.data.subbranchId, productId: that.data.productId }).then(res => {
         if (res.result == 0) {
@@ -44,88 +43,88 @@ Page({
             'signType': res.data.signType,
             'paySign': res.data.paySign,
             'success': function (res) {
-              console.log('成功')
-              that.setData({ payBtn: true })
-              Http.get('/welfarePayIsSuccess', { orderId: that.data.orderId }).then(res => {
-                console.log('支付完毕')
-                console.log(res)
-                if (res.result == 0) {
-                  wx.hideLoading();
-                  wx.showToast({
-                    title: '支付成功',
-                    icon: 'succes',
-                    duration: 1000,
-                    mask: true
-                  })
-                  setTimeout(function () {
-                    wx.navigateTo({
-                      url: '../my-exchange/exchange-detail/exchange-detail?orderId=' + that.data.orderId + '&origin=buy',
+              console.log('支付成功1')
+              setTimeout(function(){
+                that.setData({ payBtn: true })
+                Http.get('/welfarePayIsSuccess', { orderId: that.data.orderId }).then(res => {
+                  if (res.result == 0) {
+                    wx.hideLoading();
+                    wx.showToast({
+                      title: '支付成功',
+                      icon: 'succes',
+                      duration: 1000,
+                      mask: true
                     })
-                  }, 1300)
-                } else {
-                  wx.hideLoading();
-                  wx.showModal({
-                    // title: '提示',
-                    content: '支付失败',
-                    showCancel: false,
-                    success: function (res) {
-                      if (res.confirm) {
-                        console.log('用户点击确定')
-                      } else {
-                        console.log('用户点击取消')
-                      }
+                    setTimeout(function () {
+                      wx.navigateTo({
+                        url: '../my-exchange/exchange-detail/exchange-detail?orderId=' + that.data.orderId + '&origin=buy',
+                      })
+                    }, 1300)
+                  } else {
+                    wx.hideLoading();
+                    wx.showModal({
+                      // title: '提示',
+                      content: '支付失败',
+                      showCancel: false,
+                      success: function (res) {
+                        if (res.confirm) {
+                          console.log('用户点击确定')
+                        } else {
+                          console.log('用户点击取消')
+                        }
 
-                    }
-                  })
-                }
-                wx.hideLoading();
-              }, _ => {
-                wx.hideLoading();
-              });
+                      }
+                    })
+                  }
+                  wx.hideLoading();
+                }, _ => {
+                  wx.hideLoading();
+                });
+              },1300)
             },
             'fail': function (res) {
-              console.log('失败');
-              wx.hideLoading();
-              that.setData({ payBtn: true })
-              Http.get('/welfarePayIsSuccess', { orderId: that.data.orderId }).then(res => {
-                console.log('支付完毕')
-                console.log(res)
-                if (res.result == 0) {
-                  wx.hideLoading();
-                  wx.showToast({
-                    title: '支付成功',
-                    icon: 'succes',
-                    duration: 1000,
-                    mask: true
-                  })
-                  setTimeout(function () {
-                    wx.navigateTo({
-                      url: '../my-exchange/exchange-detail/exchange-detail?orderId=' + that.data.orderId + '&origin=buy',
+              console.log('支付失败2')
+              setTimeout(function(){
+                wx.hideLoading();
+                that.setData({ payBtn: true })
+                Http.get('/welfarePayIsSuccess', { orderId: that.data.orderId }).then(res => {
+                  if (res.result == 0) {
+                    wx.hideLoading();
+                    wx.showToast({
+                      title: '支付成功',
+                      icon: 'succes',
+                      duration: 1000,
+                      mask: true
                     })
-                  }, 1000)
-                } else {
-                  wx.hideLoading();
-                  wx.showModal({
-                    // title: '提示',
-                    content: '支付失败',
-                    showCancel: false,
-                    success: function (res) {
-                      if (res.confirm) {
-                        console.log('用户点击确定')
-                      } else {
-                        console.log('用户点击取消')
-                      }
+                    setTimeout(function () {
+                      wx.navigateTo({
+                        url: '../my-exchange/exchange-detail/exchange-detail?orderId=' + that.data.orderId + '&origin=buy',
+                      })
+                    }, 1000)
+                  } else {
+                    wx.hideLoading();
+                    wx.showModal({
+                      // title: '提示',
+                      content: '支付失败',
+                      showCancel: false,
+                      success: function (res) {
+                        if (res.confirm) {
+                          console.log('用户点击确定')
+                        } else {
+                          console.log('用户点击取消')
+                        }
 
-                    }
-                  })
-                }
-                wx.hideLoading();
-              }, _ => {
-                wx.hideLoading();
-              });
+                      }
+                    })
+                  }
+                  wx.hideLoading();
+                }, _ => {
+                  wx.hideLoading();
+                });
+              },1300)
             },
             'complete': function (res) {
-              console.log('执行')
+
             }
           })
 

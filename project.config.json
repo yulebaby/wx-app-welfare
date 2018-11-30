@@ -42,7 +42,7 @@
 					"id": 0,
 					"name": "详情页",
 					"pathName": "pages/benefit/ware-detail/ware-detail",
-					"query": "origin=app&productId=81"
+					"query": "origin=app&productId=47"
 				}
 			]
 		}
