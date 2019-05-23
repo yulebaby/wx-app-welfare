@@ -35,8 +35,9 @@ swiper image{
 }
 /*去除滚动条*/
 ::-webkit-scrollbar {width: 0;height: 0;color: transparent;}
-.tabBar>view{float:left;font-size:28rpx;padding:30rpx 30rpx;}
-.tabNow{color:#FD5576;border-bottom:2rpx solid #FD5576;}
+.tabBar view{float:left;font-size:28rpx;padding:30rpx 30rpx; border-bottom:2rpx solid #fff;
+ }
+.tabBar .tabNow{color:#FD5576;border-bottom:2rpx solid #FD5576;}
 /* ------------------- 商品列表 ------------------- */
 .wareList_box{padding:0 20rpx;}
 .ware_list{padding:27rpx 0 40rpx;border-bottom:1rpx solid #F0F0F0;position:relative;}

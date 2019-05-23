@@ -1,6 +1,5 @@
 {
-  "pages":[
-    
+  "pages": [
     "pages/index/index",
     "pages/benefit/ware-detail/ware-detail",
     "pages/benefit/store-list/store-list",
@@ -13,11 +12,11 @@
     "pages/my/pay/pay",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#C2C2C3",
@@ -38,5 +37,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
